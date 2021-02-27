@@ -1,6 +1,8 @@
 import React from 'react';
 import '../App.css';
 
+import { BookTwoTone,HomeTwoTone } from '@ant-design/icons';
+
 import { Layout, Menu } from 'antd';
 import {
   MenuUnfoldOutlined,
@@ -31,14 +33,23 @@ class compro_1_leyout extends React.Component {
           <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo" />
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} style={{minHeight:'100vh'}}>
-              <Menu.Item key="1" icon={<UserOutlined />}>
-                nav 1
+              <Menu.Item key="1" icon={<HomeTwoTone />}>
+                Home
               </Menu.Item>
-              <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+              <Menu.Item key="2" icon={<BookTwoTone />}>
                 nav 2
               </Menu.Item>
-              <Menu.Item key="3" icon={<UploadOutlined />}>
+              <Menu.Item key="3" icon={<BookTwoTone />}>
                 nav 3
+              </Menu.Item>
+              <Menu.Item key="4" icon={<BookTwoTone />}>
+                nav 4
+              </Menu.Item>
+              <Menu.Item key="5" icon={<BookTwoTone />}>
+                nav 5
+              </Menu.Item>
+              <Menu.Item key="6" icon={<BookTwoTone />}>
+                nav 6
               </Menu.Item>
             </Menu>
           </Sider>
