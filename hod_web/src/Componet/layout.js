@@ -1,16 +1,9 @@
 import React from 'react';
 import '../App.css';
 
-import { BookTwoTone,HomeTwoTone } from '@ant-design/icons';
+import { BookTwoTone,HomeTwoTone,AppstoreTwoTone  } from '@ant-design/icons';
 
 import { Layout, Menu } from 'antd';
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-} from '@ant-design/icons';
 
 const { Header, Sider, Content } = Layout;
 
@@ -32,7 +25,7 @@ class compro_1_leyout extends React.Component {
         <Layout>
           <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo" />
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} style={{minHeight:'100vh'}}>
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} style={{minHeight:'100vh',marginTop: 60,fontSize: '15px'}}>
               <Menu.Item key="1" icon={<HomeTwoTone />}>
                 Home
               </Menu.Item>
@@ -54,11 +47,13 @@ class compro_1_leyout extends React.Component {
             </Menu>
           </Sider>
           <Layout className="site-layout">
-            <Header className="site-layout-background" style={{ padding: 0 }}>
-              {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+            <Header className="site-layout-background" >
+              <div style={{ textAlign: 'left' ,paddingLeft: 0,marginLeft: -100 ,fontSize: '20px'}}>
+              {React.createElement(this.state.collapsed ? AppstoreTwoTone  : AppstoreTwoTone , {
                 className: 'trigger',
                 onClick: this.toggle,
               })}
+              </div>
             </Header>
             <Content
               className="site-layout-background"
