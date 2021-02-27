@@ -11,6 +11,7 @@ class compro_1_leyout extends React.Component {
     
     state = {
         collapsed: false,
+        at_cack: 1
       };
     
       toggle = () => {
@@ -48,7 +49,7 @@ class compro_1_leyout extends React.Component {
           </Sider>
           <Layout className="site-layout">
             <Header className="site-layout-background" >
-              <div style={{ textAlign: 'left' ,paddingLeft: 0,marginLeft: -100 ,fontSize: '20px'}}>
+              <div style={{ textAlign: 'left' ,paddingLeft: 0,marginLeft: -50 ,fontSize: '20px'}}>
               {React.createElement(this.state.collapsed ? AppstoreTwoTone  : AppstoreTwoTone , {
                 className: 'trigger',
                 onClick: this.toggle,
@@ -63,7 +64,7 @@ class compro_1_leyout extends React.Component {
                 minHeight: 280,
               }}
             >
-              Content
+              {this.state.at_cack}
             </Content>
           </Layout>
         </Layout>
