@@ -8,57 +8,51 @@ import { BookTwoTone,HomeTwoTone,AppstoreTwoTone  } from '@ant-design/icons';
 
 import { Layout, Menu } from 'antd';
 
+import { Route } from "react-router-dom";
+import { HashRouter } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
 const { Header, Sider, Content } = Layout;
 
 class compro_1_leyout extends React.Component {
     
     state = {
-        collapsed: false,
+        collapsed: true,
         at_cack: <Home/>
       };
     
       toggle = () => {
         this.setState({
           collapsed: !this.state.collapsed,
-          
         });
       };
 
-    headleClick= (e) => {
-      
-      this.setState({
-        at_cack: this.state.at_cack = <Det/>})
-    }
-
-    headleClick_HOME= (e) => {
-      
-      this.setState({
-        at_cack: this.state.at_cack = <Home/>})
-    }
+    
 
     render(){
       return(
+        <HashRouter>
         <div className="App">
         <Layout>
           <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo" />
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} style={{minHeight:'100vh',marginTop: 60,fontSize: '15px'}}>
-              <Menu.Item key="1" icon={<HomeTwoTone />}onClick={this.headleClick_HOME}>
-                Home
+            <Menu theme="dark" mode="inline"  style={{minHeight:'100vh',marginTop: 60,fontSize: '15px'}}>
+              <Menu.Item key="1" icon={<HomeTwoTone />}>
+                <Link to='/Home'>Home</Link>
               </Menu.Item>
-              <Menu.Item key="2" icon={<BookTwoTone />}onClick={this.headleClick}>
-                nav 2
+              <Menu.Item key="2" icon={<BookTwoTone />}>
+                <Link to='/Det'>nav 2</Link>
               </Menu.Item>
-              <Menu.Item key="3" icon={<BookTwoTone />}onClick={this.headleClick}>
+              <Menu.Item key="3" icon={<BookTwoTone />}>
                 nav 3
               </Menu.Item>
-              <Menu.Item key="4" icon={<BookTwoTone />}onClick={this.headleClick}>
+              <Menu.Item key="4" icon={<BookTwoTone />}>
                 nav 4
               </Menu.Item>
-              <Menu.Item key="5" icon={<BookTwoTone />}onClick={this.headleClick}>
+              <Menu.Item key="5" icon={<BookTwoTone />}>
                 nav 5
               </Menu.Item>
-              <Menu.Item key="6" icon={<BookTwoTone />}onClick={this.headleClick}>
+              <Menu.Item key="6" icon={<BookTwoTone />}>
                 nav 6
               </Menu.Item>
             </Menu>
@@ -80,11 +74,13 @@ class compro_1_leyout extends React.Component {
                 minHeight: 280,
               }}
             >
-              {this.state.at_cack}
+              <Route path='/Home' component={Home}></Route>
+              <Route path='/Det' component={Det}></Route>
             </Content>
           </Layout>
         </Layout>
       </div>
+      </HashRouter>
       );
     }
     
