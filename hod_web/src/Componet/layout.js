@@ -74,7 +74,7 @@ class compro_1_leyout extends React.Component {
                 minHeight: 280,
               }}
             >
-              <Route path='/Home' component={Home}></Route>
+              <Route path='/' component={Home}></Route>
               <Route path='/Det' component={Det}></Route>
             </Content>
           </Layout>
