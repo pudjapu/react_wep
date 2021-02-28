@@ -38,7 +38,7 @@ class compro_1_leyout extends React.Component {
             <div className="logo" />
             <Menu theme="dark" mode="inline"  style={{minHeight:'100vh',marginTop: 60,fontSize: '15px'}}>
               <Menu.Item key="1" icon={<HomeTwoTone />}>
-                <Link to='/Home'>Home</Link>
+                <Link to='/'>Home</Link>
               </Menu.Item>
               <Menu.Item key="2" icon={<BookTwoTone />}>
                 <Link to='/Det'>nav 2</Link>
