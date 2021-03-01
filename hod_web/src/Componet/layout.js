@@ -2,10 +2,9 @@ import React from 'react';
 import '../App.css';
 
 import Home from './home';
-import Det from './det';
+import Bisection from './bisection_method';
 
 import { BookTwoTone,HomeTwoTone,AppstoreTwoTone  } from '@ant-design/icons';
-
 import { Layout, Menu } from 'antd';
 
 import { Route } from "react-router-dom";
@@ -41,7 +40,7 @@ class compro_1_leyout extends React.Component {
                 <Link to='/'>Home</Link>
               </Menu.Item>
               <Menu.Item key="2" icon={<BookTwoTone />}>
-                <Link to='/Det'>nav 2</Link>
+                <Link to='/Bisection'>Bisection</Link>
               </Menu.Item>
               <Menu.Item key="3" icon={<BookTwoTone />}>
                 nav 3
@@ -75,7 +74,7 @@ class compro_1_leyout extends React.Component {
               }}
             >
               <Route exact path='/' component={Home}></Route>
-              <Route path='/Det' component={Det}></Route>
+              <Route path='/Bisection' component={Bisection}></Route>
             </Content>
           </Layout>
         </Layout>
