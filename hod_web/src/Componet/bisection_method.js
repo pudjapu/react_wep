@@ -8,9 +8,9 @@ class Bisection extends React.Component{
 
     state = {
         Equation: '0',
-        XL: '1.0',
-        XR: '2.0',
-        ERROR: '0.0001',
+        XL: null,
+        XR: null,
+        ERROR: null,
       };
 
 
@@ -38,42 +38,54 @@ class Bisection extends React.Component{
         });
     };
 
+    getX = (x,Equation) =>{
+        let c = eval(Equation)
+        return c;
+    }
+
     show_value = (e) =>{
+
+        //const Parser = require('expr-eval').Parser;
 
         let Equation = this.state.Equation;
         Equation = Equation.replaceAll('^','**');
-        Equation = eval(Equation);
         let XL = this.state.XL;
+        //console.log(Equation);
         XL = parseFloat(XL);
         let XR = this.state.XR;
         XR = parseFloat(XR);
-        let ERR = this.state.ERR;
+        let ERR = this.state.ERROR;
         ERR = parseFloat(ERR);
+
+        //console.log(this.getX(0,Equation));
 
         let Xmid = (XL+XR)/2;
         let XM = 0;
-        let errer_sum = 1
+        let errer_sum = 1;
         
-        let expression = Parser.parse(Equation);
-        let result = expression.evaluate({ x: Xmid });
+        let result = this.getX(Xmid,Equation) * this.getX(XR,Equation);
 
         if(result < 0){
-            XL = XM;
+            XL = Xmid;
         }
         else{
-            XR = XM;
+            XR = Xmid;
         }
+
+        console.log(errer_sum);
+        console.log(ERR);
 
         while(errer_sum > ERR){
             XM = (XL+XR)/2;
 
-            expression = Parser.parse(Equation);
-            result = expression.evaluate({ x: Xmid });
+            console.log(XM);
 
-            result < 0 ? (XL = XM) : (XR = XM);
+            result = this.getX(XM,Equation) * this.getX(XR,Equation);
+            console.log(result);
+            (result < 0) ? (XL = XM) : (XR = XM);
 
-            errer_sum = Math.abs((XM-XMold)/XM);
-            XMold = XM;
+            errer_sum = Math.abs((XM-Xmid)/XM);
+            Xmid = XM;
 
         }
 
