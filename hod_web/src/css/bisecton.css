@@ -4,4 +4,21 @@
 
 .allinbisetion{
     text-align: left;
+    background-color:#00f7ff17;
+    border-radius: 10px;
+}
+
+.Input_2{
+    width: 100px;
+    margin: 20px;
+}
+
+.in_box{
+    margin-left: 20px;
+    
+}
+
+.Calculate_Button{
+    margin-left: 10px;
+    
 }
