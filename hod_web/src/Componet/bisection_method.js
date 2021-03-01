@@ -39,12 +39,45 @@ class Bisection extends React.Component{
     };
 
     show_value = (e) =>{
-        console.log(this.state.Equation)
 
-        let Equation = this.state.Equation
-        Equation = eval(Equation)
+        let Equation = this.state.Equation;
+        Equation = Equation.replaceAll('^','**');
+        Equation = eval(Equation);
+        let XL = this.state.XL;
+        XL = parseFloat(XL);
+        let XR = this.state.XR;
+        XR = parseFloat(XR);
+        let ERR = this.state.ERR;
+        ERR = parseFloat(ERR);
 
-        console.log(Equation)
+        let Xmid = (XL+XR)/2;
+        let XM = 0;
+        let errer_sum = 1
+        
+        let expression = Parser.parse(Equation);
+        let result = expression.evaluate({ x: Xmid });
+
+        if(result < 0){
+            XL = XM;
+        }
+        else{
+            XR = XM;
+        }
+
+        while(errer_sum > ERR){
+            XM = (XL+XR)/2;
+
+            expression = Parser.parse(Equation);
+            result = expression.evaluate({ x: Xmid });
+
+            result < 0 ? (XL = XM) : (XR = XM);
+
+            errer_sum = Math.abs((XM-XMold)/XM);
+            XMold = XM;
+
+        }
+
+        console.log(XM);
     }
 
     render(){
@@ -58,11 +91,14 @@ class Bisection extends React.Component{
                     </div>
                     <div>
                         <span className="Text_Input_2"> XL : </span>
-                        <span><Input placeholder="1.0" onChange={this.getvalu} className="Input_2"/></span>
+                        <span><Input placeholder="1.0" onChange={this.getXL} className="Input_2"/></span>
                         <span className="Text_Input_2"> XR : </span>
-                        <span><Input placeholder="2.0" onChange={this.getvalu} className="Input_2"/></span>
+                        <span><Input placeholder="2.0" onChange={this.getXR} className="Input_2"/></span>
                         <span className="Text_Input_2"> ERROR : </span>
-                        <span><Input placeholder="0.0001" onChange={this.getvalu} className="Input_2"/></span>
+                        <span><Input placeholder="0.0001" onChange={this.getERR} className="Input_2"/></span>
+                    </div>
+                    <div>
+
                     </div>
                 </div>
             </div>
