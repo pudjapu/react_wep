@@ -3,6 +3,7 @@ import '../App.css';
 
 import Home from './home';
 import Bisection from './bisection_method';
+import False_position from './false_position'
 
 import { BookTwoTone,HomeTwoTone,AppstoreTwoTone  } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
@@ -43,7 +44,7 @@ class compro_1_leyout extends React.Component {
                 <Link to='/Bisection'>Bisection</Link>
               </Menu.Item>
               <Menu.Item key="3" icon={<BookTwoTone />}>
-                nav 3
+              <Link to='/False_position'>False position</Link>
               </Menu.Item>
               <Menu.Item key="4" icon={<BookTwoTone />}>
                 nav 4
@@ -75,6 +76,7 @@ class compro_1_leyout extends React.Component {
             >
               <Route exact path='/' component={Home}></Route>
               <Route path='/Bisection' component={Bisection}></Route>
+              <Route path='/False_position' component={False_position}></Route>
             </Content>
           </Layout>
         </Layout>
