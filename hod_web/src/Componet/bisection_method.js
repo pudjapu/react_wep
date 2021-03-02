@@ -11,6 +11,7 @@ class Bisection extends React.Component{
         XL: '1.5',
         XR: '2.0',
         ERROR: '0.000001',
+        result: '',
       };
 
 
@@ -41,6 +42,8 @@ class Bisection extends React.Component{
     show_value = (e) =>{
 
         const Parser = require('expr-eval').Parser; // ฟั่งชั้นแปลงสมการ
+        let i = 1;
+        let arr = [];
 
         let Equation = this.state.Equation;
         let XL = this.state.XL;
@@ -68,13 +71,14 @@ class Bisection extends React.Component{
 
             errer_sum = Math.abs((XM-Xmid)/XM);
             Xmid = XM;
-
+            arr.push(<div className='result'>Iteration {i} : {XM}</div>);
+            i = i+1;
         }
-
-        console.log(XM);
+        this.setState({result: arr})
     }
 
     render(){
+
         return(
             <div className="allinbisetion" >
                 <div className="in_box">
@@ -91,9 +95,7 @@ class Bisection extends React.Component{
                         <span className="Text_Input_2"> ERROR : </span>
                         <span><Input placeholder="0.000001" onChange={this.getERR} className="Input_2"/></span>
                     </div>
-                    <div>
-
-                    </div>
+                    {this.state.result}
                 </div>
             </div>
 
