@@ -4,8 +4,9 @@ import '../App.css';
 import Home from './home';
 import Bisection from './bisection_method';
 import False_position from './false_position'
+import Test from './test'
 
-import { BookTwoTone,HomeTwoTone,AppstoreTwoTone  } from '@ant-design/icons';
+import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone  } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 
 import { Route } from "react-router-dom";
@@ -52,7 +53,7 @@ class compro_1_leyout extends React.Component {
               <Menu.Item key="5" icon={<BookTwoTone />}>
                 nav 5
               </Menu.Item>
-              <Menu.Item key="6" icon={<BookTwoTone />}>
+              <Menu.Item key="6" icon={<QuestionCircleTwoTone />}>
                 nav 6
               </Menu.Item>
             </Menu>
@@ -77,6 +78,7 @@ class compro_1_leyout extends React.Component {
               <Route exact path='/' component={Home}></Route>
               <Route path='/Bisection' component={Bisection}></Route>
               <Route path='/False_position' component={False_position}></Route>
+              <Route path='/test' component={Test}></Route>
             </Content>
           </Layout>
         </Layout>

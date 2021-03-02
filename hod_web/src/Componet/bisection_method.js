@@ -71,7 +71,7 @@ class Bisection extends React.Component{
 
             errer_sum = Math.abs((XM-Xmid)/XM);
             Xmid = XM;
-            arr.push(<div className='result'>Iteration {i} : {XM}</div>);
+            arr.push(<div className='result' key={i}>Iteration {i} : {XM}</div>);
             i = i+1;
         }
         this.setState({result: arr})
