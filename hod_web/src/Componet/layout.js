@@ -6,6 +6,7 @@ import Bisection from './bisection_method';
 import False_position from './false_position'
 import Test from './test'
 import OnePoint from './one-point_iteration'
+import Newton from './Newton'
 
 import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone  } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
@@ -52,7 +53,7 @@ class compro_1_leyout extends React.Component {
               <Link to='/OnePoint'>One-point iteration</Link>
               </Menu.Item>
               <Menu.Item key="5" icon={<BookTwoTone />}>
-                nav 5
+              <Link to='/Newton'>Newton Raphson</Link>
               </Menu.Item>
               <Menu.Item key="6" icon={<QuestionCircleTwoTone />}>
                 nav 6
@@ -80,7 +81,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/Bisection' component={Bisection}></Route>
               <Route path='/False_position' component={False_position}></Route>
               <Route path='/OnePoint' component={OnePoint}></Route>
-
+              <Route path='/Newton' component={Newton}></Route>
               <Route path='/test' component={Test}></Route>
               
             </Content>
