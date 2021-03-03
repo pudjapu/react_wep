@@ -7,6 +7,7 @@ import False_position from './false_position'
 import Test from './test'
 import OnePoint from './one-point_iteration'
 import Newton from './Newton'
+import Secant from './Secant'
 
 import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone  } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
@@ -55,9 +56,12 @@ class compro_1_leyout extends React.Component {
               <Menu.Item key="5" icon={<BookTwoTone />}>
               <Link to='/Newton'>Newton Raphson</Link>
               </Menu.Item>
-              <Menu.Item key="6" icon={<QuestionCircleTwoTone />}>
-                nav 6
+              <Menu.Item key="6" icon={<BookTwoTone />}>
+              <Link to='/Secant'>Secant</Link>
               </Menu.Item>
+              {/* <Menu.Item key="7" icon={<QuestionCircleTwoTone />}>
+              <Link to='/Secant'>Secant</Link>
+              </Menu.Item> */}
             </Menu>
           </Sider>
           <Layout className="site-layout">
@@ -82,6 +86,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/False_position' component={False_position}></Route>
               <Route path='/OnePoint' component={OnePoint}></Route>
               <Route path='/Newton' component={Newton}></Route>
+              <Route path='/Secant' component={Secant}></Route>
               <Route path='/test' component={Test}></Route>
               
             </Content>
