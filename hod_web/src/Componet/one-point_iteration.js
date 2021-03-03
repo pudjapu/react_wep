@@ -48,7 +48,7 @@ class One_point extends React.Component{
             x1 = expression.evaluate({ x: X })
             error_1 = Math.abs((x1-X)/x1)
 
-            if(err == error_1){
+            if(err === error_1){
                 break;
             }
             arr.push(<div className='result' key={i}>Iteration {i} : {x1}</div>);
@@ -57,7 +57,7 @@ class One_point extends React.Component{
             err = error_1;
             X = x1;
         }
-        if(arr.length == 0){
+        if(arr.length === 0){
             this.setState({result: 'Is Diverge'})
         }
         else{
