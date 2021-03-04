@@ -8,6 +8,7 @@ import Test from './test'
 import OnePoint from './one-point_iteration'
 import Newton from './Newton'
 import Secant from './Secant'
+import Cramer from './cramer’s_rule'
 
 import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone  } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
@@ -59,9 +60,9 @@ class compro_1_leyout extends React.Component {
               <Menu.Item key="6" icon={<BookTwoTone />}>
               <Link to='/Secant'>Secant</Link>
               </Menu.Item>
-              {/* <Menu.Item key="7" icon={<QuestionCircleTwoTone />}>
-              <Link to='/Secant'>Secant</Link>
-              </Menu.Item> */}
+              <Menu.Item key="7" icon={<QuestionCircleTwoTone />}>
+              <Link to='/cramer_rule'>Cramer</Link>
+              </Menu.Item>
             </Menu>
           </Sider>
           <Layout className="site-layout">
@@ -87,6 +88,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/OnePoint' component={OnePoint}></Route>
               <Route path='/Newton' component={Newton}></Route>
               <Route path='/Secant' component={Secant}></Route>
+              <Route path='/cramer_rule' component={Cramer}></Route>
               <Route path='/test' component={Test}></Route>
               
             </Content>
