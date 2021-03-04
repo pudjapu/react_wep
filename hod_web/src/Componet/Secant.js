@@ -80,7 +80,7 @@ class Secant extends React.Component{
                 <div>
                     <span className="Text_Input_2"> X 1 : </span>
                     <span><Input placeholder="2.0" onChange={this.getX} className="Input_2"/></span>
-                    <span className="Text_Input_2"> X 12: </span>
+                    <span className="Text_Input_2"> X 2 : </span>
                     <span><Input placeholder="2.2" onChange={this.getX_2} className="Input_2"/></span>
                     <span className="Text_Input_2"> ERROR : </span>
                     <span><Input placeholder="0.000001" onChange={this.getERR} className="Input_2"/></span>

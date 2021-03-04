@@ -1,10 +1,9 @@
 import React, { forwardRef } from 'react'
-
+import '../css/Cramer.css'
 // import {AddMatrix,DelMatrix,MakeMatrix,Getvalue} from './Source/Matrix'
 
 import { Input } from 'antd'
 import { Button } from 'antd'
-import { matrix } from 'mathjs'
 
 class Cramer extends React.Component{
 
@@ -12,6 +11,7 @@ class Cramer extends React.Component{
         rows: 2,
         columns: 2,
         Matrix: [[],[]],
+        Answer: [],
     }
 
     AddMatrix = (e) =>{
@@ -43,11 +43,24 @@ class Cramer extends React.Component{
         let i,j
         for(i= 0;i < rows;i++){
             for(j = 0; j < columns;j++){
-                wow.push(<span className="MyInput"><Input name={i.toString()+','+j.toString()} onChange={this.getvalue} className="Input_2" style={{margin: '5px'}} value={this.state.Matrix[i][j]}/></span>)
+                wow.push(<span className="MyInput"><Input name={i.toString()+','+j.toString()} onChange={this.Getvalue} className="Input_2" style={{margin: '5px'}} value={this.state.Matrix[i][j]}/></span>)
             }
             wow.push(<div></div>)
         }
-        console.log(wow)
+        // console.log(wow)
+        return(wow);
+    }
+
+    MakeAnswer = (e) =>{
+        let rows = this.state.rows;
+        rows = parseInt(rows);
+
+        let wow = [];
+        let i;
+        for(i = 0; i < rows;i++){
+            wow.push(<Input name={i.toString()} onChange={this.GetAnswer} className="Input_2" style={{margin: '5px'}} value={this.state.Answer[i]}/>)
+            wow.push(<div></div>)
+        }
         return(wow);
     }
 
@@ -59,13 +72,28 @@ class Cramer extends React.Component{
         this.setState({Matrix: Matrix})
     }
 
+    GetAnswer = (e) => {
+        let Answer = this.state.Answer;
+        Answer[parseInt(e.target.name)]= e.target.value;
+        this.setState({Answer: Answer})
+        this.setState({Answer: Answer})
+    }
+
+    Calculate = (e) =>{
+
+    }
+
     render(){
         return(
             <div className='allincompro'>
                 <h2>Cramer's Rule</h2>
-                <button onClick={this.AddMatrix}>add row/column</button>
-                <button onClick={this.DelMatrix}>Del row/column</button>
-                <div>{this.MakeMatrix()}</div>
+                <div>
+                    <button onClick={this.AddMatrix}>add row/column</button>
+                    <button onClick={this.DelMatrix}>Del row/column</button>
+                    <button onClick={this.Calculate}>Calculate</button>
+                </div>
+                <div className='MakeMatrix'>{this.MakeMatrix()}{this.MakeAnswer()}</div>
+                {/* <div className='MakeAnswer'>{this.MakeAnswer()}</div> */}
             </div>
             
         )

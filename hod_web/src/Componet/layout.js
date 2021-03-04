@@ -8,7 +8,7 @@ import Test from './test'
 import OnePoint from './one-point_iteration'
 import Newton from './Newton'
 import Secant from './Secant'
-import Cramer from './cramer’s_rule'
+import Cramer from './cramer_rule'
 
 import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone  } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
