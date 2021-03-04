@@ -1,8 +1,6 @@
 import React from 'react'
 import '../css/Secant.css'
 
-import {derivative} from 'mathjs'
-
 import { Input } from 'antd';
 import { Button } from 'antd';
 

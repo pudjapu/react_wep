@@ -12,6 +12,7 @@ class Cramer extends React.Component{
         columns: 2,
         Matrix: [[],[]],
         Answer: [],
+        X: [],
     }
 
     AddMatrix = (e) =>{
@@ -81,6 +82,51 @@ class Cramer extends React.Component{
 
     Calculate = (e) =>{
 
+        var math = require('mathjs');
+
+        let Matrix = this.state.Matrix;
+        let Answer = this.state.Answer;
+        let rows = this.state.rows;
+        rows = parseInt(rows);
+
+        let i,j
+
+        for(i = 0;i < rows;i++){
+            for(j = 0;j < rows;j++){
+                Matrix[i][j] = parseInt(Matrix[i][j]);
+            }
+            Answer[i] = parseInt(Answer[i]);
+        }
+
+        let temp = [];
+        for (i = 0; i < rows; i++)
+                temp[i] = Matrix[i].slice();
+
+        let Array_ = [];
+
+        Array_.push(math.det(Matrix).toFixed(5));
+
+        for(i = 0;i < rows;i++){
+            for(j = 0;j < rows;j++){
+                temp[j][i] =  Answer[j];
+            }
+            Array_.push(math.det(temp).toFixed(5));
+            for(j = 0;j < rows;j++){
+                temp[j][i] =  Matrix[j][i];
+            }
+        }
+
+        let X = [];
+
+        for(i = 0;i < rows; i++){
+            X.push(Array_[i+1]/Array_[0]);
+        }
+        for(i = 0;i < rows; i++){
+            X[i] = (<div  key={i}>X{i+1} : {X[i]}</div>);
+        }
+        
+        this.setState({X: X});
+
     }
 
     render(){
@@ -92,8 +138,11 @@ class Cramer extends React.Component{
                     <button onClick={this.DelMatrix}>Del row/column</button>
                     <button onClick={this.Calculate}>Calculate</button>
                 </div>
-                <div className='MakeMatrix'>{this.MakeMatrix()}{this.MakeAnswer()}</div>
-                {/* <div className='MakeAnswer'>{this.MakeAnswer()}</div> */}
+                <div className='MakeMatrix'>
+                <div>{this.MakeMatrix()}</div>
+                <div>{this.MakeAnswer()}</div>
+                </div>
+                {this.state.X}
             </div>
             
         )
