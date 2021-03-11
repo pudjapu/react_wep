@@ -1,10 +1,12 @@
-function jacobi(a,b,x) {
+function jacobi(a,b,x,error_) {
 
-    error_ = [9999,9999,9999]
+    todolist = true
 
     x_old = [...x];
 
-    while(error_[0] > 0.000001 || error_[1] > 0.000001 || error_[2] > 0.000001){
+    (error_[0] > 0.000001 || error_[1] > 0.000001 || error_[2] > 0.000001) ? todolist = true : todolist = false
+
+    while(todolist){
         
         x_old = [...x];
 
@@ -31,6 +33,8 @@ function jacobi(a,b,x) {
             console.log("error"+i.toString()+"="+error_[i].toString());
         }
 
+        (error_[0] > 0.000001 || error_[1] > 0.000001 || error_[2] > 0.000001) ? todolist = true : todolist = false
+
     }
 }
 
@@ -41,5 +45,7 @@ b = [9,0,-4]
 
 x= [1,1,1]
 
-jacobi(a,b,x);
+error_ = [9999,9999,9999]
+
+jacobi(a,b,x,error_);
 
