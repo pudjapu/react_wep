@@ -1,12 +1,16 @@
 function jacobi(a,b,x,error_) {
 
-    todolist = true
+    wow = false;
 
     x_old = [...x];
 
-    (error_[0] > 0.000001 || error_[1] > 0.000001 || error_[2] > 0.000001) ? todolist = true : todolist = false
+    for(i = 0;i < error_.length;i++){
+        if(error_[i] > 0.000001){
+            wow = true;
+        }
+    }
 
-    while(todolist){
+    while(wow){
         
         x_old = [...x];
 
@@ -33,7 +37,13 @@ function jacobi(a,b,x,error_) {
             console.log("error"+i.toString()+"="+error_[i].toString());
         }
 
-        (error_[0] > 0.000001 || error_[1] > 0.000001 || error_[2] > 0.000001) ? todolist = true : todolist = false
+        wow = false;
+
+        for(i = 0;i < error_.length;i++){
+            if(error_[i] > 0.000001){
+                wow = true;
+            }
+        }
 
     }
 }
