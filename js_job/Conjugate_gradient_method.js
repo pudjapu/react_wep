@@ -6,9 +6,13 @@ function Conjugate(a,b,x){
     d = math.multiply(-1,r)
     ramda = math.multiply(math.multiply(-1,math.transpose(d)),r)/math.multiply(math.transpose(d),math.multiply(a,d));
 
+    console.log("ramda : " + ramda.toString());
+
     for(i = 0;i < x.length;i++){
         x[i] = x[i] + (d[i]*ramda);
     }
+
+    console.log(x)
 
     error_ = 99999999999999
     
@@ -25,16 +29,16 @@ function Conjugate(a,b,x){
         for(i = 0;i < b.length;i++){
             d[i] = (r[i]*-1)+(alpha*d[i]);
         }
-
         ramda = math.multiply(math.multiply(-1,math.transpose(d)),r)/math.multiply(math.transpose(d),math.multiply(a,d));
+
 
         for(i = 0;i < x.length;i++){
             x[i] = x[i] + (d[i]*ramda);
         }
-        
-        console.log(x);
+
+        console.log(x)
+
         error_ = math.sqrt(math.multiply(math.transpose(r),r))
-        console.log(error_);
         if(error_ > error_old){
             console.log("ไม่มีคำตอบ");
             return;
