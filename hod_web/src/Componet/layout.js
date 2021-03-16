@@ -9,8 +9,9 @@ import OnePoint from './one-point_iteration'
 import Newton from './Newton'
 import Secant from './Secant'
 import Cramer from './cramer_rule'
+import Polynomial from './polynomial'
 
-import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone  } from '@ant-design/icons';
+import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone,InteractionTwoTone  } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 
 import { Route } from "react-router-dom";
@@ -63,6 +64,9 @@ class compro_1_leyout extends React.Component {
               <Menu.Item key="7" icon={<QuestionCircleTwoTone />}>
               <Link to='/cramer_rule'>Cramer</Link>
               </Menu.Item>
+              <Menu.Item key="8" icon={<InteractionTwoTone />}>
+              <Link to='/polynomial'>Polynomial</Link>
+              </Menu.Item>
             </Menu>
           </Sider>
           <Layout className="site-layout">
@@ -89,6 +93,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/Newton' component={Newton}></Route>
               <Route path='/Secant' component={Secant}></Route>
               <Route path='/cramer_rule' component={Cramer}></Route>
+              <Route path='/polynomial' component={Polynomial}></Route>
               <Route path='/test' component={Test}></Route>
               
             </Content>
