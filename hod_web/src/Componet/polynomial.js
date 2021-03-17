@@ -7,7 +7,9 @@ class Polynomial extends React.Component{
     state = {
         rows: 2,
         Matrix: [[],[]],
-        Answer: [],
+        X: 0,
+        Answer: '',
+        
     }
 
     AddMatrix = (e) =>{
@@ -39,18 +41,62 @@ class Polynomial extends React.Component{
             }
             wow.push(<div></div>)
         }
-        // console.log(wow)
         return(wow);
+    }
+
+    Getvalue = (e) => {
+        let arr = [];
+        let Matrix = this.state.Matrix;
+        arr = e.target.name.split(',');
+        Matrix[parseFloat(arr[0])][parseFloat(arr[1])] = e.target.value;
+        this.setState({Matrix: Matrix})
+    }
+
+    GetX = (e) =>{
+        let X = this.state.X;
+        X = e.target.value;
+        this.setState({X: X})
+    }
+
+    Calculate = (e) =>{
+
+        var interpolatingPolynomial = require('interpolating-polynomial')
+
+        let Matrix = this.state.Matrix;
+        let rows = this.state.rows;
+        rows = parseInt(rows);
+
+        let X = this.state.X;
+        X = parseFloat(X)
+
+        let i,f,Answer
+
+        for(i = 0;i < rows;i++){
+            Matrix[i][0] = parseFloat(Matrix[i][0]);
+            Matrix[i][1] = parseFloat(Matrix[i][1]);
+        }
+
+        f = interpolatingPolynomial(Matrix);
+
+        Answer = f(X)
+
+        this.setState({Answer: "f(x) : "+Answer.toString()})
     }
 
     render(){
         return(
             <div className='allincompro'>
+                <h2>Polynomial</h2>
                 <div>
                     <button onClick={this.AddMatrix}>add Point</button>
                     <button onClick={this.DelMatrix}>Del Point</button>
+                    <button onClick={this.Calculate}>Calculate</button>
+                </div>
+                <div>
+                    X : <Input onChange={this.GetX} style={{margin: '5px' ,  width: 150}} width/>
                 </div>
                 <div>{this.MakeMatrix()}</div>
+                {this.state.Answer}
             </div>
         )
     }
