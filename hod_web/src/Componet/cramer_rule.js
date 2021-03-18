@@ -1,9 +1,9 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import '../css/Cramer.css'
 // import {AddMatrix,DelMatrix,MakeMatrix,Getvalue} from './Source/Matrix'
 
 import { Input } from 'antd'
-import { Button } from 'antd'
+//import { Button } from 'antd'
 
 class Cramer extends React.Component{
 

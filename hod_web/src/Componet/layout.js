@@ -11,14 +11,28 @@ import Secant from './Secant'
 import Cramer from './cramer_rule'
 import Polynomial from './polynomial'
 
-import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone,InteractionTwoTone  } from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
+//import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone,InteractionTwoTone  } from '@ant-design/icons';
+
+//import { Layout, Menu } from 'antd';
 
 import { Route } from "react-router-dom";
 import { HashRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
-const { Header, Sider, Content } = Layout;
+
+
+
+import { Layout, Menu} from 'antd';
+import {
+  DesktopOutlined,
+  TeamOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
+
+const { Header, Content, Sider } = Layout;
+const { SubMenu } = Menu;
+
+//const { Header, Sider, Content } = Layout;
 
 class compro_1_leyout extends React.Component {
     
@@ -33,59 +47,44 @@ class compro_1_leyout extends React.Component {
         });
       };
 
+      state = {
+        collapsed: false,
+      };
+    
+      onCollapse = collapsed => {
+        this.setState({ collapsed });
+      };
     
 
     render(){
+
+      const { collapsed } = this.state;
+
       return(
-        <HashRouter>
-        <div className="App">
-        <Layout>
-          <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-            <div className="logo" />
-            <Menu theme="dark" mode="inline"  style={{minHeight:'100vh',marginTop: 60,fontSize: '15px'}}>
-              <Menu.Item key="1" icon={<HomeTwoTone />}>
-                <Link to='/'>Home</Link>
-              </Menu.Item>
-              <Menu.Item key="2" icon={<BookTwoTone />}>
-                <Link to='/Bisection'>Bisection</Link>
-              </Menu.Item>
-              <Menu.Item key="3" icon={<BookTwoTone />}>
-              <Link to='/False_position'>False position</Link>
-              </Menu.Item>
-              <Menu.Item key="4" icon={<BookTwoTone />}>
-              <Link to='/OnePoint'>One-point iteration</Link>
-              </Menu.Item>
-              <Menu.Item key="5" icon={<BookTwoTone />}>
-              <Link to='/Newton'>Newton Raphson</Link>
-              </Menu.Item>
-              <Menu.Item key="6" icon={<BookTwoTone />}>
-              <Link to='/Secant'>Secant</Link>
-              </Menu.Item>
-              <Menu.Item key="7" icon={<QuestionCircleTwoTone />}>
-              <Link to='/cramer_rule'>Cramer</Link>
-              </Menu.Item>
-              <Menu.Item key="8" icon={<InteractionTwoTone />}>
-              <Link to='/polynomial'>Polynomial</Link>
-              </Menu.Item>
-            </Menu>
-          </Sider>
-          <Layout className="site-layout">
-            <Header className="site-layout-background" >
-              <div style={{ textAlign: 'left' ,paddingLeft: 0,marginLeft: -47 ,fontSize: '20px'}}>
-              {React.createElement(this.state.collapsed ? AppstoreTwoTone  : AppstoreTwoTone , {
-                className: 'trigger',
-                onClick: this.toggle,
-              })}
-              </div>
-            </Header>
-            <Content
-              className="site-layout-background"
-              style={{
-                margin: '24px 16px',
-                padding: 24,
-                minHeight: 280,
-              }}
-            >
+      <HashRouter>
+      <Layout style={{ minHeight: '100vh' }}>
+      <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+        <div className="logo" />
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+          <Menu.Item key="1" icon={<DesktopOutlined/>} style={{marginTop: '64px'}}><Link to='/'>Home</Link></Menu.Item>
+          <SubMenu key="sub1" icon={<UserOutlined />} title="Roots of equation">
+            <Menu.Item key="2"><Link to='/Bisection'>Bisection</Link></Menu.Item>
+            <Menu.Item key="3"><Link to='/False_position'>False position</Link></Menu.Item>
+            <Menu.Item key="4"><Link to='/OnePoint'>One-point iteration</Link></Menu.Item>
+            <Menu.Item key="5"><Link to='/Newton'>Newton Raphson</Link></Menu.Item>
+            <Menu.Item key="6"><Link to='/Secant'>Secant</Link></Menu.Item>
+          </SubMenu>
+          <SubMenu key="sub2" icon={<TeamOutlined />} title="Matrix">
+            <Menu.Item key="7"><Link to='/cramer_rule'>Cramer</Link></Menu.Item>
+          </SubMenu>
+          <SubMenu key="sub3" icon={<TeamOutlined />} title="Interpolation">
+            <Menu.Item key="7"><Link to='/polynomial'>Polynomial</Link></Menu.Item>
+          </SubMenu>
+        </Menu>
+      </Sider>
+      <Layout className="site-layout">
+        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Content style={{ margin: '0 16px' ,marginTop: '20px'}}>
               <Route exact path='/' component={Home}></Route>
               <Route path='/Bisection' component={Bisection}></Route>
               <Route path='/False_position' component={False_position}></Route>
@@ -95,12 +94,10 @@ class compro_1_leyout extends React.Component {
               <Route path='/cramer_rule' component={Cramer}></Route>
               <Route path='/polynomial' component={Polynomial}></Route>
               <Route path='/test' component={Test}></Route>
-              
-            </Content>
-          </Layout>
-        </Layout>
-      </div>
-      </HashRouter>
+        </Content>
+      </Layout>
+    </Layout>
+    </HashRouter>
       );
     }
     
