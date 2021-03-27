@@ -112,7 +112,7 @@ class Gauss_Elimination extends React.Component{
                 }
             }
             // console.log("(("+Matrix[i][rows].toString()+"-"+ss.toString()+")/"+Matrix[i][i].toString()+")");
-            aw[i] = ((Matrix[i][rows]-ss)/Matrix[i][i]);
+            aw[i] = ((Matrix[i][rows]+ss)/Matrix[i][i]);
         }
 
         console.log(aw);
