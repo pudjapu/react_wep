@@ -100,7 +100,7 @@ class Gauss_Elimination extends React.Component{
             aw.push(0);
         }
 
-        console.log(Matrix);
+        // console.log(Matrix);
 
         for(i = rows-1;i >= 0;i--){
             ss = 0;
@@ -108,25 +108,21 @@ class Gauss_Elimination extends React.Component{
                 if(i !== j){
                     ss = ss-(aw[j]*Matrix[i][j]);
                     // console.log(aw[j].toString() + "*" +Matrix[i][j].toString());
-                    console.log(ss);
+                    // console.log(ss);
                 }
             }
             // console.log("(("+Matrix[i][rows].toString()+"-"+ss.toString()+")/"+Matrix[i][i].toString()+")");
             aw[i] = ((Matrix[i][rows]+ss)/Matrix[i][i]);
         }
 
-        console.log(aw);
+        let data = [],result;
 
-        /// แก้ต่อด้วย
+        for( i = 0;i < rows;i++){
+            result = aw[i]
+            data.push(<div className='result' key={i}> X{i+1} : {result}</div>)
+        }
 
-        // let x3 = (Matrix[2][3]/Matrix[2][2]).toFixed(5);
-        // let x2 = ((Matrix[1][3]-(Matrix[1][2]*x3))/Matrix[1][1]).toFixed(5);
-        // let x1 = ((Matrix[0][3]-(Matrix[0][1]*x2)-(Matrix[0][2]*x3))/Matrix[0][0]).toFixed(5);
-
-        // console.log("x1 : " + x1);
-        // console.log("x2 : " + x2);
-        // console.log("x3 : " + x3);
-
+        this.setState({X: data})
     }
 
     render(){
