@@ -69,7 +69,7 @@ class Gauss_Elimination extends React.Component{
         columns = parseInt(columns);
 
         // make to fload
-        let i,j,k
+        let i,j,k,ss
         for(i = 0 ;i < rows;i++){
             for(j = 0;j < columns+1;j++){
                 Matrix[i][j] = parseFloat(Matrix[i][j])
@@ -95,15 +95,37 @@ class Gauss_Elimination extends React.Component{
             
         }
 
+        let aw = [];
+        for(i = 0;i <rows;i++){
+            aw.push(0);
+        }
+
+        console.log(Matrix);
+
+        for(i = rows-1;i >= 0;i--){
+            ss = 0;
+            for(j = 0; j < rows;j++){
+                if(i !== j){
+                    ss = ss-(aw[j]*Matrix[i][j]);
+                    // console.log(aw[j].toString() + "*" +Matrix[i][j].toString());
+                    console.log(ss);
+                }
+            }
+            // console.log("(("+Matrix[i][rows].toString()+"-"+ss.toString()+")/"+Matrix[i][i].toString()+")");
+            aw[i] = ((Matrix[i][rows]-ss)/Matrix[i][i]);
+        }
+
+        console.log(aw);
+
         /// แก้ต่อด้วย
 
-        let x3 = (Matrix[2][3]/Matrix[2][2]).toFixed(5);
-        let x2 = ((Matrix[1][3]-(Matrix[1][2]*x3))/Matrix[1][1]).toFixed(5);
-        let x1 = ((Matrix[0][3]-(Matrix[0][1]*x2)-(Matrix[0][2]*x3))/Matrix[0][0]).toFixed(5);
+        // let x3 = (Matrix[2][3]/Matrix[2][2]).toFixed(5);
+        // let x2 = ((Matrix[1][3]-(Matrix[1][2]*x3))/Matrix[1][1]).toFixed(5);
+        // let x1 = ((Matrix[0][3]-(Matrix[0][1]*x2)-(Matrix[0][2]*x3))/Matrix[0][0]).toFixed(5);
 
-        console.log("x1 : " + x1);
-        console.log("x2 : " + x2);
-        console.log("x3 : " + x3);
+        // console.log("x1 : " + x1);
+        // console.log("x2 : " + x2);
+        // console.log("x3 : " + x3);
 
     }
 
