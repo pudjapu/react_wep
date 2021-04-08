@@ -82,6 +82,7 @@ class compro_1_leyout extends React.Component {
           <SubMenu key="sub3" icon={<TeamOutlined />} title="Interpolation">
             <Menu.Item key="7"><Link to='/polynomial'>Polynomial</Link></Menu.Item>
           </SubMenu>
+          <Menu.Item key="12"><Link to='/test'>Test</Link></Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
