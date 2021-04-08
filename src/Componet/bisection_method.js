@@ -2,6 +2,8 @@ import React from 'react';
 import { Input } from 'antd';
 import { Button } from 'antd';
 
+import { bisection } from './Source/bisection'
+
 import '../css/bisecton.css';
 
 class Bisection extends React.Component{
@@ -41,40 +43,16 @@ class Bisection extends React.Component{
 
     show_value = (e) =>{
 
-        const Parser = require('expr-eval').Parser; // ฟั่งชั้นแปลงสมการ
-        let i = 1;
+        let data = bisection(this.state.XL,this.state.XR,this.state.ERROR,this.state.Equation);
+
+        let i;
         let arr = [];
 
-        let Equation = this.state.Equation;
-        let XL = this.state.XL;
-        XL = parseFloat(XL);
-        let XR = this.state.XR;
-        XR = parseFloat(XR);
-        let ERROR = this.state.ERROR;
-        ERROR = parseFloat(ERROR);
-
-        let Xmid = (XL+XR)/2;
-        let XM = 0;
-        let errer_sum = 1;
-
-        var expression = Parser.parse(Equation);
-        let result = expression.evaluate({ x: Xmid }) * expression.evaluate({ x: XR });
-
-        (result < 0) ? (XL = Xmid) : XR = Xmid;
-
-        while(errer_sum > ERROR){
-            XM = (XL+XR)/2;
-
-            result = expression.evaluate({ x: XM }) * expression.evaluate({ x: XR });
-
-            (result < 0) ? (XL = XM) : (XR = XM);
-
-            errer_sum = Math.abs((XM-Xmid)/XM);
-            Xmid = XM;
-            arr.push(<div className='result' key={i}>Iteration {i} : {XM}</div>);
-            i = i+1;
+        for(i = 0; i < data.length;i++){
+            arr.push(<div className='result' key={i}>Iteration {i+1} : {data[i][0]}</div>);
         }
-        this.setState({result: arr})
+
+        this.setState({result: arr});
     }
 
     render(){
