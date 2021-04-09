@@ -10,7 +10,7 @@ class test extends React.Component{
     showData = (e) => {
         axios.get(apiUrl)
         .then(function (response) {
-            response.
+            
             console.log(response);
           })
           .catch(function (error) {
