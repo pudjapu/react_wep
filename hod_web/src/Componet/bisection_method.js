@@ -11,7 +11,7 @@ let apiUrl = "http://localhost:4040/root"
 class Bisection extends React.Component{
 
     state = {
-        Equation: 'x^4-13',
+        Equation: '',
         XL: '',
         XR: '',
         ERROR: '',
