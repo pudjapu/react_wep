@@ -25,6 +25,12 @@ class Bisection extends React.Component{
         this.setState({Equation: data[0].eqtion,XL: data[0].xl,XR: data[0].xr,ERROR: data[0].error})
     }
 
+    async gatdata() { // ฟังชั้นเรียก api
+        let response = await fetch(apiUrl);
+        let data = await response.json();
+        this.setState({Equation: data[0].eqtion,XL: data[0].xl,XR: data[0].xr,ERROR: data[0].error})
+    }
+
     getEquation = (e) => {
         this.setState({
             Equation: e.target.value,

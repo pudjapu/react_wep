@@ -11,6 +11,7 @@ import Secant from './Secant'
 import Cramer from './cramer_rule'
 import Polynomial from './polynomial'
 import Gauss_Elimination from './Gauss_Elimination'
+import Gauss_jodan from './Gauss-Jodan'
 
 //import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone,InteractionTwoTone  } from '@ant-design/icons';
 
@@ -78,6 +79,7 @@ class compro_1_leyout extends React.Component {
           <SubMenu key="sub2" icon={<TeamOutlined />} title="Matrix">
             <Menu.Item key="7"><Link to='/cramer_rule'>Cramer</Link></Menu.Item>
             <Menu.Item key="8"><Link to='/Gauss_Elimination'>Gauss Elimination</Link></Menu.Item>
+            <Menu.Item key="9"><Link to='/Gauss_jodan'>Gauss Jodan</Link></Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" icon={<TeamOutlined />} title="Interpolation">
             <Menu.Item key="7"><Link to='/polynomial'>Polynomial</Link></Menu.Item>
@@ -97,6 +99,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/cramer_rule' component={Cramer}></Route>
               <Route path='/polynomial' component={Polynomial}></Route>
               <Route path='/Gauss_Elimination' component={Gauss_Elimination}></Route>
+              <Route path='/Gauss_jodan' component={Gauss_jodan}></Route>
               <Route path='/test' component={Test}></Route>
         </Content>
       </Layout>
