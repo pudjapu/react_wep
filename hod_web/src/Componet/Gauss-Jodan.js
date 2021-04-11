@@ -29,12 +29,28 @@ class Gauss_Elimination extends React.Component{
         this.setState({Matrix: Matrix})
     }
 
+    del = (e) =>{
+        if(this.state.rows > 2){
+            this.setState({rows: this.state.rows-1})
+            let Matrix = this.state.Matrix;
+            Matrix.pop();
+            this.setState({Matrix: Matrix})
+        }
+        
+    }
+
+    cal = (e) =>{
+        
+    }
+
     render(){
         return(
             <div className='allincompro'>
+                <button onClick={this.aDD}>+</button>
+                <button onClick={this.del}>-</button>
+                <button onClick={this.del}>cal</button>
                 <Matrix n={this.state.rows} onChange={this.Input} />
 
-                <button onClick={this.aDD}>+</button>
             </div>
             
         )

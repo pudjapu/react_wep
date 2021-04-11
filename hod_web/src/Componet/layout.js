@@ -80,9 +80,14 @@ class compro_1_leyout extends React.Component {
             <Menu.Item key="7"><Link to='/cramer_rule'>Cramer</Link></Menu.Item>
             <Menu.Item key="8"><Link to='/Gauss_Elimination'>Gauss Elimination</Link></Menu.Item>
             <Menu.Item key="9"><Link to='/Gauss_jodan'>Gauss Jodan</Link></Menu.Item>
+            <Menu.Item key="10"><Link to='/lu_de'>Lu decomposition</Link></Menu.Item>
+            <Menu.Item key="10"><Link to='/jacobi_iter'>Jacobi iteration</Link></Menu.Item>
+            <Menu.Item key="10"><Link to='/gauss-seidel_iter'>Gauss-seidel iteration</Link></Menu.Item>
+            <Menu.Item key="10"><Link to='/conjugate'>Conjugate gradient</Link></Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" icon={<TeamOutlined />} title="Interpolation">
-            <Menu.Item key="7"><Link to='/polynomial'>Polynomial</Link></Menu.Item>
+            <Menu.Item key="11"><Link to='/polynomial'>Polynomial</Link></Menu.Item>
+            <Menu.Item key="12"><Link to='/lagrang'>Lagrang interpolation</Link></Menu.Item>
           </SubMenu>
           <Menu.Item key="12"><Link to='/test'>Test</Link></Menu.Item>
         </Menu>
@@ -97,9 +102,15 @@ class compro_1_leyout extends React.Component {
               <Route path='/Newton' component={Newton}></Route>
               <Route path='/Secant' component={Secant}></Route>
               <Route path='/cramer_rule' component={Cramer}></Route>
-              <Route path='/polynomial' component={Polynomial}></Route>
               <Route path='/Gauss_Elimination' component={Gauss_Elimination}></Route>
               <Route path='/Gauss_jodan' component={Gauss_jodan}></Route>
+              <Route path='/lu_de' component={Gauss_jodan}></Route>
+              <Route path='/jacobi_iter' component={Gauss_jodan}></Route>
+              <Route path='/gauss-seidel_iter' component={Gauss_jodan}></Route>
+              <Route path='/conjugate' component={Gauss_jodan}></Route>
+              <Route path='/polynomial' component={Polynomial}></Route>
+              <Route path='/conjugate' component={Polynomial}></Route>
+
               <Route path='/test' component={Test}></Route>
         </Content>
       </Layout>
