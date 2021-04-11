@@ -6,7 +6,8 @@ import { bisection } from './Source/bisection'
 
 import '../css/bisecton.css';
 
-let apiUrl = "http://localhost:4040/root"
+// let apiUrl = "http://localhost:4040/root"
+let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 
 class Bisection extends React.Component{
 
