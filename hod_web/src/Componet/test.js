@@ -2,7 +2,7 @@ import React from 'react';
 const axios = require('axios');
 
 
-let apiUrl = "http://localhost:4200/member/1"
+let apiUrl = "http://localhost:4040/root"
 let results
 
 class test extends React.Component{
@@ -10,13 +10,16 @@ class test extends React.Component{
     state = {
         item: [],
     }
-    
+
     showData = (e) => {
-        fetch(apiUrl)
-          .then(results => results.json())
-          .then(results => this.setState({item: results}))
-        console.log(results)
+        console.log(this.state.item)
     };
+
+    async componentDidMount() {
+        let response = await fetch(apiUrl);
+        let data = await response.json();
+        this.setState({item: data[0]})
+    }
 
     render(){
         return(
