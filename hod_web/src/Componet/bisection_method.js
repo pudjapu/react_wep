@@ -6,16 +6,23 @@ import { bisection } from './Source/bisection'
 
 import '../css/bisecton.css';
 
+let apiUrl = "http://localhost:4040/root"
+
 class Bisection extends React.Component{
 
     state = {
         Equation: 'x^4-13',
-        XL: '1.5',
-        XR: '2.0',
-        ERROR: '0.000001',
+        XL: '',
+        XR: '',
+        ERROR: '',
         result: '',
       };
 
+    async componentDidMount() {
+        let response = await fetch(apiUrl);
+        let data = await response.json();
+        this.setState({Equation: data[0].eqtion,XL: data[0].xl,XR: data[0].xr,ERROR: data[0].error})
+    }
 
     getEquation = (e) => {
         this.setState({

@@ -3,7 +3,6 @@ const axios = require('axios');
 
 
 let apiUrl = "http://localhost:4040/root"
-let results
 
 class test extends React.Component{
     
