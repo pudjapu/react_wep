@@ -4,7 +4,6 @@ import '../App.css';
 import Home from './home';
 import Bisection from './bisection_method';
 import False_position from './false_position'
-import Test from './test'
 import OnePoint from './one-point_iteration'
 import Newton from './Newton'
 import Secant from './Secant'
@@ -81,15 +80,14 @@ class compro_1_leyout extends React.Component {
             <Menu.Item key="8"><Link to='/Gauss_Elimination'>Gauss Elimination</Link></Menu.Item>
             <Menu.Item key="9"><Link to='/Gauss_jodan'>Gauss Jodan</Link></Menu.Item>
             <Menu.Item key="10"><Link to='/lu_de'>Lu decomposition</Link></Menu.Item>
-            <Menu.Item key="10"><Link to='/jacobi_iter'>Jacobi iteration</Link></Menu.Item>
-            <Menu.Item key="10"><Link to='/gauss-seidel_iter'>Gauss-seidel iteration</Link></Menu.Item>
-            <Menu.Item key="10"><Link to='/conjugate'>Conjugate gradient</Link></Menu.Item>
+            <Menu.Item key="11"><Link to='/jacobi_iter'>Jacobi iteration</Link></Menu.Item>
+            <Menu.Item key="12"><Link to='/gauss-seidel_iter'>Gauss-seidel iteration</Link></Menu.Item>
+            <Menu.Item key="13"><Link to='/conjugate'>Conjugate gradient</Link></Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" icon={<TeamOutlined />} title="Interpolation">
-            <Menu.Item key="11"><Link to='/polynomial'>Polynomial</Link></Menu.Item>
-            <Menu.Item key="12"><Link to='/lagrang'>Lagrang interpolation</Link></Menu.Item>
+            <Menu.Item key="14"><Link to='/polynomial'>Polynomial</Link></Menu.Item>
+            <Menu.Item key="15"><Link to='/lagrang'>Lagrang interpolation</Link></Menu.Item>
           </SubMenu>
-          <Menu.Item key="12"><Link to='/test'>Test</Link></Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
@@ -109,9 +107,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/gauss-seidel_iter' component={Gauss_jodan}></Route>
               <Route path='/conjugate' component={Gauss_jodan}></Route>
               <Route path='/polynomial' component={Polynomial}></Route>
-              <Route path='/conjugate' component={Polynomial}></Route>
-
-              <Route path='/test' component={Test}></Route>
+              <Route path='/lagrang' component={Polynomial}></Route>
         </Content>
       </Layout>
     </Layout>
