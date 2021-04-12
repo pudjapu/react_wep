@@ -1,4 +1,3 @@
-const math = require("mathjs");
 const Parser = require('expr-eval').Parser;
 
 export function bisection( in_xl, in_xr, in_err,in_equa) {

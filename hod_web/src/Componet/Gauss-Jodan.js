@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Cramer.css'
 import Matrix from './Source/Matrix'
+import {Gauss_jodan} from './Source/Gauss_jodan'
 
 import { Input } from 'antd'
 //import { Button } from 'antd'
@@ -22,34 +23,38 @@ class Gauss_Elimination extends React.Component{
         this.setState({Matrix: Matrix})
     }
     
-    aDD = (e) =>{
+    AddMatrix = (e) =>{
         this.setState({rows: this.state.rows+1})
         let Matrix = this.state.Matrix;
         Matrix.push([]);
         this.setState({Matrix: Matrix})
     }
 
-    del = (e) =>{
+    DelMatrix = (e) =>{
         if(this.state.rows > 2){
+            let i;
             this.setState({rows: this.state.rows-1})
             let Matrix = this.state.Matrix;
             Matrix.pop();
+            for(i = 0;i < Matrix.length;i++){
+                Matrix[i].pop();
+            }
             this.setState({Matrix: Matrix})
         }
         
     }
 
-    cal = (e) =>{
-        
+    Calculate = (e) =>{
+        let answer = Gauss_jodan(this.state.Matrix)
     }
 
     render(){
         return(
             <div className='allincompro'>
-                <button onClick={this.aDD}>+</button>
-                <button onClick={this.del}>-</button>
-                <button onClick={this.del}>cal</button>
-                <Matrix n={this.state.rows} onChange={this.Input} />
+                <button onClick={this.AddMatrix}>+</button>
+                <button onClick={this.DelMatrix}>-</button>
+                <button onClick={this.Calculate}>cal</button>
+                <Matrix row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
 
             </div>
             
