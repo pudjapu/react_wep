@@ -1,4 +1,10 @@
-export function Gauss_jodan(Matrix){
+export function Gauss_jodan(Matrix_in){
+
+    let Matrix = [];
+    for (let i = 0; i < Matrix_in.length; i++)
+        Matrix[i] = Matrix_in[i].slice();
+        
+
 
     for(let k = 0; k < Matrix.length-1; k++){
 

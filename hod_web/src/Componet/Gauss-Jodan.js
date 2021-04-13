@@ -46,6 +46,11 @@ class Gauss_Elimination extends React.Component{
 
     Calculate = (e) =>{
         let answer = Gauss_jodan(this.state.Matrix)
+        let data = [];
+        for(let i =0;i < answer.length;i++){
+            data.push(<div key={i}>X{i+1} : {answer[i]}</div>)
+        }
+        this.setState({X: data})
     }
 
     render(){
@@ -55,6 +60,7 @@ class Gauss_Elimination extends React.Component{
                 <button onClick={this.DelMatrix}>-</button>
                 <button onClick={this.Calculate}>cal</button>
                 <Matrix row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
+                <div>{this.state.X}</div>
 
             </div>
             

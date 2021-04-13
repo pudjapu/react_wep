@@ -11,6 +11,7 @@ import Cramer from './cramer_rule'
 import Polynomial from './polynomial'
 import Gauss_Elimination from './Gauss_Elimination'
 import Gauss_jodan from './Gauss-Jodan'
+import Lu_decomposition from './lu_decomposition'
 
 //import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone,InteractionTwoTone  } from '@ant-design/icons';
 
@@ -102,7 +103,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/cramer_rule' component={Cramer}></Route>
               <Route path='/Gauss_Elimination' component={Gauss_Elimination}></Route>
               <Route path='/Gauss_jodan' component={Gauss_jodan}></Route>
-              <Route path='/lu_de' component={Gauss_jodan}></Route>
+              <Route path='/lu_de' component={Lu_decomposition}></Route>
               <Route path='/jacobi_iter' component={Gauss_jodan}></Route>
               <Route path='/gauss-seidel_iter' component={Gauss_jodan}></Route>
               <Route path='/conjugate' component={Gauss_jodan}></Route>
