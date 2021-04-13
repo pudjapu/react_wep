@@ -73,6 +73,7 @@ class Lu_decomposition extends React.Component{
     render(){
         return(
             <div className='allincompro'>
+                <h2>Lu decomposition</h2>
                 <button onClick={this.AddMatrix}>+</button>
                 <button onClick={this.DelMatrix}>-</button>
                 <button onClick={this.Calculate}>cal</button>

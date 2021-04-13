@@ -56,6 +56,7 @@ class Gauss_Elimination extends React.Component{
     render(){
         return(
             <div className='allincompro'>
+                <h2>Gauss Jodan</h2>
                 <button onClick={this.AddMatrix}>+</button>
                 <button onClick={this.DelMatrix}>-</button>
                 <button onClick={this.Calculate}>cal</button>
