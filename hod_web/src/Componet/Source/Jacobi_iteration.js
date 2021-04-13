@@ -20,7 +20,7 @@ export function Jacobi(a,b,x,error_,_error) {
         for(let i = 0;i < a.length;i++){
             x[i] = b[i];
             for(let j = 0;j < a[0].length;j++){
-                if(i != j){
+                if(i !== j){
                     x[i] = x[i]- (a[i][j]*x_old[j])
                 }
             }
