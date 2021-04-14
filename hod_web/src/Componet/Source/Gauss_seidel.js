@@ -36,7 +36,7 @@ export function Gauss(a,b,x,error_,_error) {
         aws = [];
         aws.push(<div key={coss}>Iteration {coss}</div>)
         for(let i = 0;i < x.length;i++){
-            aws.push(<div key={coss}>x{coss} : {x[i]} error : {error_[i]}</div>);
+            aws.push(<div key={coss}>x{i+1} : {x[i]} error : {error_[i]}</div>);
         }
         data.push(aws);
 
