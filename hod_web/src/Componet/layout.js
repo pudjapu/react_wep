@@ -16,6 +16,8 @@ import Jacobi_iteration from './Jacobi_iteration'
 import Gauss_seidel from './Gauss_seidel'
 import Conjugates from './Conjugate_gradient'
 import Lagrang from './lagrange'
+import Cubic from './Cubic_spline'
+import Regression from './Regression'
 
 //import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone,InteractionTwoTone  } from '@ant-design/icons';
 
@@ -92,6 +94,8 @@ class compro_1_leyout extends React.Component {
           <SubMenu key="sub3" icon={<TeamOutlined />} title="Interpolation">
             <Menu.Item key="14"><Link to='/polynomial'>Polynomial</Link></Menu.Item>
             <Menu.Item key="15"><Link to='/lagrang'>Lagrang interpolation</Link></Menu.Item>
+            <Menu.Item key="16"><Link to='/Cubic'>Cubic-spline</Link></Menu.Item>
+            <Menu.Item key="17"><Link to='/regression'>Regression</Link></Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>
@@ -112,7 +116,9 @@ class compro_1_leyout extends React.Component {
               <Route path='/gauss-seidel_iter' component={Gauss_seidel}></Route>
               <Route path='/conjugate' component={Conjugates}></Route>
               <Route path='/polynomial' component={Polynomial}></Route>
+              <Route path='/Cubic' component={Cubic}></Route>
               <Route path='/lagrang' component={Lagrang}></Route>
+              <Route path='/regression' component={Regression}></Route>
         </Content>
       </Layout>
     </Layout>
