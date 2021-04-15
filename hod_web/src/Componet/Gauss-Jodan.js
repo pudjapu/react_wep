@@ -1,6 +1,6 @@
 import React from 'react'
 import '../css/Cramer.css'
-import Matrix from './Source/Matrix'
+import {Matrix} from './Source/Matrix'
 import {Gauss_jodan} from './Source/Gauss_jodan'
 
 import { Input } from 'antd'

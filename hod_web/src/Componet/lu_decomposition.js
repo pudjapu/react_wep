@@ -1,5 +1,5 @@
 import React from 'react'
-import Matrix from './Source/Matrix'
+import {Matrix} from './Source/Matrix'
 import Lu_de from './Source/lu_decompo'
 
 class Lu_decomposition extends React.Component{

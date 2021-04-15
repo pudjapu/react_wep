@@ -15,6 +15,7 @@ import Lu_decomposition from './lu_decomposition'
 import Jacobi_iteration from './Jacobi_iteration'
 import Gauss_seidel from './Gauss_seidel'
 import Conjugates from './Conjugate_gradient'
+import Lagrang from './lagrange'
 
 //import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone,InteractionTwoTone  } from '@ant-design/icons';
 
@@ -111,7 +112,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/gauss-seidel_iter' component={Gauss_seidel}></Route>
               <Route path='/conjugate' component={Conjugates}></Route>
               <Route path='/polynomial' component={Polynomial}></Route>
-              <Route path='/lagrang' component={Polynomial}></Route>
+              <Route path='/lagrang' component={Lagrang}></Route>
         </Content>
       </Layout>
     </Layout>

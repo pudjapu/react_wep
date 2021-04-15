@@ -1,5 +1,5 @@
 import React from 'react'
-import Matrix from './Source/Matrix'
+import {Matrix} from './Source/Matrix'
 import {Jacobi} from './Source/Jacobi_iteration'
 
 import { Input } from 'antd';

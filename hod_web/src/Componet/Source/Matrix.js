@@ -24,4 +24,4 @@ class Matrix extends React.Component{
     }
 }
 
-export default Matrix
+export {Matrix}
