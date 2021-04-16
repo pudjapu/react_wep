@@ -1,13 +1,14 @@
 import React from 'react'
 
-import '../css/regression.css'
+import '../css/polynomail_reger.css'
 
 import { Input } from 'antd'
 
 import {Matrix2Input} from './Source/Matrix'
 import regression from 'regression';
+var math = require('mathjs');
 
-class Linear extends React.Component{
+class Polynomial extends React.Component{
 
     
     state = {
@@ -70,15 +71,16 @@ class Linear extends React.Component{
             data.push([parseFloat(Matrix[i][0]),parseFloat(Matrix[i][1])])
         }
         let result = regression.linear(data);
-        let a1 = result.equation[0];
-        let a0 = result.equation[1];
-        this.setState({Answer: a0+(a1*parseFloat(this.state.X))})
+        let a2 = result.equation[0];
+        let a1 = result.equation[1];
+        let a0 = result.equation[2];
+        this.setState({Answer: a0+(a1*parseFloat(this.state.X))+(math.pow(a2,2)*parseFloat(this.state.X))})
     }
 
     render(){
         return(
             <div className='allincompro'>
-                <h2>Linear regression</h2>
+                <h2>Polynomial regression</h2>
                 <button onClick={this.AddMatrix}>+</button>
                 <button onClick={this.DelMatrix}>-</button>
                 <button onClick={this.Calculate}>cal</button>
@@ -91,4 +93,4 @@ class Linear extends React.Component{
     }
 }
 
-export default Linear;
+export default Polynomial;

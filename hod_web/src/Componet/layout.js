@@ -18,6 +18,7 @@ import Conjugates from './Conjugate_gradient'
 import Lagrang from './lagrange'
 import Cubic from './Cubic_spline'
 import Linear from './Linear_regression'
+import Polynomial_regression from './Polynomial_regression'
 
 //import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone,InteractionTwoTone  } from '@ant-design/icons';
 
@@ -95,7 +96,8 @@ class compro_1_leyout extends React.Component {
             <Menu.Item key="14"><Link to='/polynomial'>Polynomial</Link></Menu.Item>
             <Menu.Item key="15"><Link to='/lagrang'>Lagrang interpolation</Link></Menu.Item>
             <Menu.Item key="16"><Link to='/Cubic'>Cubic-spline</Link></Menu.Item>
-            <Menu.Item key="17"><Link to='/Linear'>Regression</Link></Menu.Item>
+            <Menu.Item key="17"><Link to='/Linear'>Linear regression</Link></Menu.Item>
+            <Menu.Item key="18"><Link to='/Polynomial-regression'>Polynomial regression</Link></Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>
@@ -119,6 +121,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/Cubic' component={Cubic}></Route>
               <Route path='/lagrang' component={Lagrang}></Route>
               <Route path='/Linear' component={Linear}></Route>
+              <Route path='/Polynomial-regression' component={Polynomial_regression}></Route>
         </Content>
       </Layout>
     </Layout>
