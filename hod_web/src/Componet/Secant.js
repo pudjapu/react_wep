@@ -4,14 +4,38 @@ import '../css/Secant.css'
 import { Input } from 'antd';
 import { Button } from 'antd';
 
+import axios from 'axios'
+
+// let apiUrl = "http://localhost:4040/root"
+let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
+
 class Secant extends React.Component{
 
     state = {
-        Equation: "x^2-7",
-        X_1: '2.0',
-        X_2: '2.2',
-        ERROR: '0.000001',
+        Equation: "",
+        X_1: '',
+        X_2: '',
+        ERROR: '',
         result: '',
+    }
+
+    async gatdata() { // ฟังชั้นเรียก api
+        try {
+
+            const data = await axios.get(apiUrl).then(e => (
+                e.data
+            ))
+            
+            this.setState({Equation: data[4]["eqtion"],X_1: data[4]["x1"],X_2: data[4]["x2"],ERROR: data[4]["error"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
     }
 
     getEquation = (e) => {
@@ -33,8 +57,8 @@ class Secant extends React.Component{
     };
 
     show_value = (e) =>{
-        
-        const Parser = require('expr-eval').Parser;
+        try{
+            const Parser = require('expr-eval').Parser;
 
         let i = 1;
         let arr = [];
@@ -64,6 +88,10 @@ class Secant extends React.Component{
             i++;
         }
         this.setState({result: arr})
+        } catch(e){
+            this.setState({result : "No data"})
+        }
+        
 
     }
 
@@ -72,16 +100,17 @@ class Secant extends React.Component{
             <div className='allincompro'>
                 <h2>Secant</h2>
                 <div>
-                <span><Input placeholder="x^2-7" onChange={this.getEquation} className="Input"/></span>
+                <span><Input onChange={this.getEquation} className="Input" value={this.state.Equation}/></span>
                     <span className="Calculate_Button"><Button type="primary" onClick={this.show_value} >Calculate</Button></span>
+                    <span className="Calculate_Button"><Button type="primary" onClick={this.getdata_} >Get example</Button></span>
                 </div>
                 <div>
                     <span className="Text_Input_2"> X 1 : </span>
-                    <span><Input placeholder="2.0" onChange={this.getX} className="Input_2"/></span>
+                    <span><Input onChange={this.getX} className="Input_2" value={this.state.X_1} /></span>
                     <span className="Text_Input_2"> X 2 : </span>
-                    <span><Input placeholder="2.2" onChange={this.getX_2} className="Input_2"/></span>
+                    <span><Input onChange={this.getX_2} className="Input_2"  value={this.state.X_2}/></span>
                     <span className="Text_Input_2"> ERROR : </span>
-                    <span><Input placeholder="0.000001" onChange={this.getERR} className="Input_2"/></span>
+                    <span><Input onChange={this.getERR} className="Input_2" value={this.state.ERROR} /></span>
                 </div>
                 {this.state.result}
             </div>
