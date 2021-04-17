@@ -134,8 +134,8 @@ class Cramer extends React.Component{
             <div className='allincompro'>
                 <h2>Cramer's Rule</h2>
                 <div>
-                    <Button className='button_laout' type="primary" onClick={this.AddMatrix}>add row/column</Button>
-                    <Button className='button_laout' type="primary" onClick={this.DelMatrix}>Del row/column</Button>
+                    <Button className='button_laout' type="primary" onClick={this.AddMatrix}>Add row/column</Button>
+                    <Button className='button_laout' type="primary" onClick={this.DelMatrix}>Delete row/column</Button>
                     <Button className='button_laout' type="primary" onClick={this.Calculate}>Calculate</Button>
                 </div>
                 <div className='MakeMatrix'>
