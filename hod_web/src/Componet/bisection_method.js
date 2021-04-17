@@ -23,7 +23,7 @@ class Bisection extends React.Component{
 
     async gatdata() { // ฟังชั้นเรียก api
         try {
-            
+
             const data = await axios.get(apiUrl).then(e => (
                 e.data
             ))
@@ -65,17 +65,21 @@ class Bisection extends React.Component{
     };
 
     show_value = (e) =>{
+        try{
+            let data = bisection(this.state.XL,this.state.XR,this.state.ERROR,this.state.Equation);
 
-        let data = bisection(this.state.XL,this.state.XR,this.state.ERROR,this.state.Equation);
+            let i;
+            let arr = [];
 
-        let i;
-        let arr = [];
+            for(i = 0; i < data.length;i++){
+                arr.push(<div className='result' key={i}>Iteration {i+1} : {data[i][0]}</div>);
+            }
 
-        for(i = 0; i < data.length;i++){
-            arr.push(<div className='result' key={i}>Iteration {i+1} : {data[i][0]}</div>);
+            this.setState({result: arr});
+        } catch(error) {
+            this.setState({result : "No data"})
         }
-
-        this.setState({result: arr});
+        
     }
 
     render(){
