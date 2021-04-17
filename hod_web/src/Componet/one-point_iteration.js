@@ -5,6 +5,7 @@ import { Button } from 'antd';
 
 import '../css/one_point.css'
 import axios from 'axios'
+// let apiUrl = "http://localhost:4040/root"
 let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 class One_point extends React.Component{
 
