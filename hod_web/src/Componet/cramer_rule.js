@@ -3,7 +3,7 @@ import '../css/Cramer.css'
 // import {AddMatrix,DelMatrix,MakeMatrix,Getvalue} from './Source/Matrix'
 
 import { Input } from 'antd'
-//import { Button } from 'antd'
+import { Button } from 'antd'
 
 class Cramer extends React.Component{
 
@@ -134,15 +134,15 @@ class Cramer extends React.Component{
             <div className='allincompro'>
                 <h2>Cramer's Rule</h2>
                 <div>
-                    <button onClick={this.AddMatrix}>add row/column</button>
-                    <button onClick={this.DelMatrix}>Del row/column</button>
-                    <button onClick={this.Calculate}>Calculate</button>
+                    <Button className='button_laout' type="primary" onClick={this.AddMatrix}>add row/column</Button>
+                    <Button className='button_laout' type="primary" onClick={this.DelMatrix}>Del row/column</Button>
+                    <Button className='button_laout' type="primary" onClick={this.Calculate}>Calculate</Button>
                 </div>
                 <div className='MakeMatrix'>
                 <div>{this.MakeMatrix()}</div>
                 <div>{this.MakeAnswer()}</div>
                 </div>
-                {this.state.X}
+                <div className='Matrix'>{this.state.X}</div>
             </div>
             
         )
