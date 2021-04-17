@@ -4,15 +4,35 @@ import { Input } from 'antd';
 import { Button } from 'antd';
 
 import '../css/one_point.css'
-
+import axios from 'axios'
+let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 class One_point extends React.Component{
 
     state = {
-        Equation: '(-0.6*x)+0.8',
-        X: '0',
-        ERROR: '0.000001',
+        Equation: '',
+        X: '',
+        ERROR: '',
         result: '',
       };
+
+      async gatdata() { // ฟังชั้นเรียก api
+        try {
+
+            const data = await axios.get(apiUrl).then(e => (
+                e.data
+            ))
+            
+            this.setState({Equation: data[2]["eqtion"],X: data[2]["x"],ERROR: data[2]["error"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
+    }
     
     getEquation = (e) => {
         this.setState({
@@ -28,7 +48,8 @@ class One_point extends React.Component{
 
     show_value = (e) =>{
 
-        const Parser = require('expr-eval').Parser;
+        try {
+            const Parser = require('expr-eval').Parser;
 
         let i = 1;
         let arr = [];
@@ -63,6 +84,11 @@ class One_point extends React.Component{
         else{
             this.setState({result: arr})
         }
+        } catch(e){
+            this.setState({result : "No data"})
+        }
+
+        
     }
 
     render(){
@@ -70,14 +96,15 @@ class One_point extends React.Component{
             <div className="allincompro">
                 <h2>One-point iteration</h2>
                 <div>
-                    <span><Input placeholder="(-0.6*x)+0.8" onChange={this.getEquation} className="Input"/></span>
+                    <span><Input onChange={this.getEquation} className="Input" value={this.state.Equation}/></span>
                     <span className="Calculate_Button"><Button type="primary" onClick={this.show_value} >Calculate</Button></span>
+                    <span className="Calculate_Button"><Button type="primary" onClick={this.getdata_} >Get example</Button></span>
                 </div>
                 <div>
                 <span className="Text_Input_2"> X เริ่มต้น : </span>
-                    <span><Input placeholder="0" onChange={this.getX} className="Input_2"/></span>
+                    <span><Input onChange={this.getX} className="Input_2"value={this.state.X}/></span>
                     <span className="Text_Input_2"> ERROR : </span>
-                    <span><Input placeholder="0.000001" onChange={this.getERR} className="Input_2"/></span>
+                    <span><Input onChange={this.getERR} className="Input_2" value={this.state.ERROR}/></span>
                 </div>
                 {this.state.result}
             </div>
