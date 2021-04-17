@@ -4,6 +4,8 @@ import {Jacobi} from './Source/Jacobi_iteration'
 
 import { Input } from 'antd';
 
+import { Button } from 'antd'
+
 class Jacobi_iteration extends React.Component{
 
     state = {
@@ -85,9 +87,9 @@ class Jacobi_iteration extends React.Component{
         return(
             <div className='allincompro'>
                 <h2>Jacobi iteration</h2>
-                <button onClick={this.AddMatrix}>+</button>
-                <button onClick={this.DelMatrix}>-</button>
-                <button onClick={this.Calculate}>cal</button>
+                <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add row/column</Button>
+                <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete row/column</Button>
+                <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
                 <div>
                     <span className="Text_Input_2"> ERROR : </span>
                     <span><Input placeholder="0.000001" onChange={this.getERR} className="Input_2"/></span>

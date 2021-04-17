@@ -2,6 +2,8 @@ import React from 'react'
 import {Matrix} from './Source/Matrix'
 import Lu_de from './Source/lu_decompo'
 
+import { Button } from 'antd'
+
 class Lu_decomposition extends React.Component{
 
     state = {
@@ -74,9 +76,9 @@ class Lu_decomposition extends React.Component{
         return(
             <div className='allincompro'>
                 <h2>Lu decomposition</h2>
-                <button onClick={this.AddMatrix}>+</button>
-                <button onClick={this.DelMatrix}>-</button>
-                <button onClick={this.Calculate}>cal</button>
+                <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add row/column</Button>
+                <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete row/column</Button>
+                <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
                 <Matrix row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
                 <div>{this.state.X}</div>
             </div>
