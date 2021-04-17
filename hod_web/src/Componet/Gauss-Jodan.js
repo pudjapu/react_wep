@@ -1,10 +1,9 @@
 import React from 'react'
-import '../css/Cramer.css'
+import '../css/Gauss_jodan.css'
 import {Matrix} from './Source/Matrix'
 import {Gauss_jodan} from './Source/Gauss_jodan'
 
-import { Input } from 'antd'
-//import { Button } from 'antd'
+import { Button } from 'antd'
 
 class Gauss_Elimination extends React.Component{
 
@@ -57,9 +56,9 @@ class Gauss_Elimination extends React.Component{
         return(
             <div className='allincompro'>
                 <h2>Gauss Jodan</h2>
-                <button onClick={this.AddMatrix}>+</button>
-                <button onClick={this.DelMatrix}>-</button>
-                <button onClick={this.Calculate}>cal</button>
+                <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add row/column</Button>
+                <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete row/column</Button>
+                <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
                 <Matrix row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
                 <div>{this.state.X}</div>
 
