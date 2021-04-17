@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/polynomial.css'
 import { Input } from 'antd'
+import { Button } from 'antd'
 
 class Polynomial extends React.Component{
 
@@ -88,9 +89,9 @@ class Polynomial extends React.Component{
             <div className='allincompro'>
                 <h2>Polynomial</h2>
                 <div>
-                    <button onClick={this.AddMatrix}>add Point</button>
-                    <button onClick={this.DelMatrix}>Del Point</button>
-                    <button onClick={this.Calculate}>Calculate</button>
+                    <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add Point</Button>
+                    <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete Point</Button>
+                    <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
                 </div>
                 <div>
                     X : <Input onChange={this.GetX} style={{margin: '5px' ,  width: 150}} width/>

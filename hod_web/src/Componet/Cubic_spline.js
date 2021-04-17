@@ -3,7 +3,7 @@ import { Input } from 'antd'
 
 import {Matrix2Input} from './Source/Matrix'
 import '../css/cubic_spline.css'
-
+import { Button } from 'antd'
 
 let Spline = require('cubic-spline');
 class Cubic_spline extends React.Component{
@@ -80,9 +80,11 @@ class Cubic_spline extends React.Component{
         return(
             <div className='allincompro'>
                 <h2>Cubic-spline</h2>
-                <button onClick={this.AddMatrix}>+</button>
-                <button onClick={this.DelMatrix}>-</button>
-                <button onClick={this.Calculate}>cal</button>
+                <div>
+                    <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add Point</Button>
+                    <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete Point</Button>
+                    <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
+                </div>
                 <span className="Text_Input_2"> X value : </span>
                 <span><Input placeholder="0.000001" onChange={this.GetX} className="Input_2"/></span>
                 <Matrix2Input row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>

@@ -3,11 +3,12 @@ import { Input } from 'antd';
 import { Button } from 'antd';
 
 import { bisection } from './Source/bisection'
-
+import axios from 'axios'
 import '../css/bisecton.css';
 
 // let apiUrl = "http://localhost:4040/root"
 let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
+
 
 class Bisection extends React.Component{
 
@@ -19,16 +20,24 @@ class Bisection extends React.Component{
         result: '',
       };
 
-    async componentDidMount() {
-        let response = await fetch(apiUrl);
-        let data = await response.json();
-        this.setState({Equation: data[0].eqtion,XL: data[0].xl,XR: data[0].xr,ERROR: data[0].error})
-    }
 
     async gatdata() { // ฟังชั้นเรียก api
-        let response = await fetch(apiUrl);
-        let data = await response.json();
-        this.setState({Equation: data[0].eqtion,XL: data[0].xl,XR: data[0].xr,ERROR: data[0].error})
+        try {
+            
+            const data = await axios.get(apiUrl).then(e => (
+                e.data
+            ))
+            
+            this.setState({Equation: data[0]["eqtion"],XL: data[0]["xl"],XR: data[0]["xr"],ERROR: data[0]["error"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
     }
 
     getEquation = (e) => {
@@ -76,16 +85,17 @@ class Bisection extends React.Component{
                 <div className="in_box">
                     <h2>Bisection Method</h2>
                     <div>
-                        <span><Input placeholder="x^4-13" onChange={this.getEquation} className="Input"/></span>
+                        <span><Input onChange={this.getEquation} className="Input" value={this.state.Equation} /></span>
                         <span className="Calculate_Button"><Button type="primary" onClick={this.show_value} >Calculate</Button></span>
+                        <span className="Calculate_Button"><Button type="primary" onClick={this.getdata_} >Get example</Button></span>
                     </div>
                     <div>
                         <span className="Text_Input_2"> XL : </span>
-                        <span><Input placeholder="1.5" onChange={this.getXL} className="Input_2"/></span>
+                        <span><Input onChange={this.getXL} className="Input_2" value={this.state.XL}/></span>
                         <span className="Text_Input_2"> XR : </span>
-                        <span><Input placeholder="2.0" onChange={this.getXR} className="Input_2"/></span>
+                        <span><Input onChange={this.getXR} className="Input_2"  value={this.state.XR} /></span>
                         <span className="Text_Input_2"> ERROR : </span>
-                        <span><Input placeholder="0.000001" onChange={this.getERR} className="Input_2"/></span>
+                        <span><Input onChange={this.getERR} className="Input_2" value={this.state.ERROR}/></span>
                     </div>
                     {this.state.result}
                 </div>
