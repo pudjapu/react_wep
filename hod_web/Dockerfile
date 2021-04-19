@@ -1,7 +1,13 @@
-FROM node
-WORKDIR /app
-COPY package.json .
+FROM node:14.15
+
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app/client
+
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+COPY ./package.json /usr/src/app
 RUN npm install
-COPY . .
+RUN npm install react-scripts -g
+
 EXPOSE 3000
-CMD ["npm", "start"]
+
+CMD ["npm" , "start"]
