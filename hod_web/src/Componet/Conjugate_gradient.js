@@ -5,6 +5,9 @@ import { Input } from 'antd';
 import { Button } from 'antd'
 import '../css/Conjugate.css'
 
+import axios from 'axios'
+let apiUrl = "http://localhost:4040/data/matrix/Conjugate_gradient_method"
+
 class Conjugate extends React.Component{
 
     state = {
@@ -13,6 +16,41 @@ class Conjugate extends React.Component{
         X: [],
         ERROR: ''
     }
+
+    async gatdata() { // ฟังชั้นเรียก api
+        try {
+
+            const data = await axios.get(apiUrl).then(e => (
+                e.data
+            ))
+            
+            let row = data["row"];
+
+            if(row > parseInt(this.state.rows)){
+                let r = parseInt(this.state.rows);
+                for(let i = r;i < row;i++){
+                    this.AddMatrix();
+                }
+            }
+            else{
+                let r = parseInt(this.state.rows);
+                for(let i = r;i > row;i--){
+                    this.DelMatrix();
+                }
+            }
+                
+            this.setState({Matrix: data["Matrix"],ERROR: data["error"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
+    }
+
 
     Input = (e) =>{
         let arr = [];
@@ -23,10 +61,11 @@ class Conjugate extends React.Component{
     }
     
     AddMatrix = (e) =>{
-        this.setState({rows: this.state.rows+1})
+        
         let Matrix = this.state.Matrix;
         Matrix.push([]);
         this.setState({Matrix: Matrix})
+        this.setState({rows: this.state.rows+1})
     }
 
     getERR= (e) => {
@@ -86,9 +125,10 @@ class Conjugate extends React.Component{
                 <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add row/column</Button>
                 <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete row/column</Button>
                 <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
+                <Button type="primary" onClick={this.getdata_} >Get example</Button>
                 <div>
                     <span className="Text_Input_2"> ERROR : </span>
-                    <span><Input placeholder="0.000001" onChange={this.getERR} className="Input_2"/></span>
+                    <span><Input onChange={this.getERR} className="Input_2" value={this.state.ERROR} /></span>
                 </div>
                 <Matrix row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
                 <div>{this.state.X}</div>
