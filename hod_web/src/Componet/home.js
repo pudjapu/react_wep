@@ -1,9 +1,13 @@
 import React from 'react';
 
+import SwaggerUI from "swagger-ui-react"
+import "swagger-ui-react/swagger-ui.css"
+
 class home extends React.Component{
     render(){
         return(
-            <div>HOMEV2</div>
+            // <SwaggerUI url="" />
+            <div>home</div>
         );
     }
 }

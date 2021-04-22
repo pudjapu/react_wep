@@ -20,6 +20,8 @@ import Cubic from './Cubic_spline'
 import Linear from './Linear_regression'
 import Polynomial_regression from './Polynomial_regression'
 
+import SW from './swagger'
+
 //import { BookTwoTone,HomeTwoTone,AppstoreTwoTone,QuestionCircleTwoTone,InteractionTwoTone  } from '@ant-design/icons';
 
 //import { Layout, Menu } from 'antd';
@@ -121,6 +123,7 @@ class compro_1_leyout extends React.Component {
               <Route path='/Cubic' component={Cubic}></Route>
               <Route path='/lagrang' component={Lagrang}></Route>
               <Route path='/Linear' component={Linear}></Route>
+              <Route path='/SW' component={SW}></Route>
               <Route path='/Polynomial-regression' component={Polynomial_regression}></Route>
         </Content>
       </Layout>

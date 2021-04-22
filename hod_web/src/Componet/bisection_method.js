@@ -6,8 +6,8 @@ import { bisection } from './Source/bisection'
 import axios from 'axios'
 import '../css/bisecton.css';
 
-// let apiUrl = "http://localhost:4040/root"
-let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
+let apiUrl = "http://localhost:4200/data/root/Bisection"
+// let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 
 
 class Bisection extends React.Component{
@@ -28,7 +28,7 @@ class Bisection extends React.Component{
                 e.data
             ))
             
-            this.setState({Equation: data[0]["eqtion"],XL: data[0]["xl"],XR: data[0]["xr"],ERROR: data[0]["error"]})
+            this.setState({Equation: data["eqtion"],XL: data["xl"],XR: data["xr"],ERROR: data["error"]})
 
           } catch (error) {
             this.setState({result : "Not Sync"})

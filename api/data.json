@@ -8,20 +8,20 @@
             "error": "0.000001"
         },
         {
-            "name": "False position",
+            "name": "False_position",
             "eqtion": "x*3-1",
             "xl": "0.02",
             "xr": "0.03",
             "error": "0.000001"
         },
         {
-            "name": "One-point iteration",
+            "name": "One-point_iteration",
             "eqtion": "(-0.6*x)+0.8",
             "x": "0",
             "error": "0.000001"
         },
         {
-            "name": "Newton Raphson",
+            "name": "Newton_Raphson",
             "eqtion": "x^2-7",
             "x": "2",
             "error": "0.000001"
@@ -36,41 +36,41 @@
     ],
     "matrix" :[
         {
-            "name": "cramer rule",
+            "name": "cramer_rule",
             "row": 3,
             "Matrix": [[-2,3,1],[3,4,-5],[1,-2,1]],
             "Answer": [9,0,-4] 
         },
         {
-            "name": "Gauss Elimination Method",
+            "name": "Gauss_Elimination_Method",
             "row": 3,
             "Matrix": [[-2,3,1],[3,4,-5],[1,-2,1]],
             "Answer": [9,0,-4] 
         },
         {
-            "name": "Gauss Jodan",
+            "name": "Gauss_Jodan",
             "row": 3,
             "Matrix": [[-2,3,1,9],[3,4,-5,0],[1,-2,1,-4]]
         },
         {
-            "name": "Lu decomposition method",
+            "name": "Lu_decomposition_method",
             "row": 3,
             "Matrix": [[-2,3,1,9],[3,4,-5,0],[1,-2,1,-4]]
         },
         {
-            "name": "Jacobi iteration",
+            "name": "Jacobi_iteration",
             "row": 3,
             "Matrix": [[-2,3,1,9],[3,4,-5,0],[1,-2,1,-4]],
             "error" : "0.000001"
         },
         {
-            "name": "Gauss seidel interation",
+            "name": "Gauss_seidel_interation",
             "row": 3,
             "Matrix": [[-2,3,1,9],[3,4,-5,0],[1,-2,1,-4]],
             "error" : "0.000001"
         },
         {
-            "name": "Conjugate gradient method",
+            "name": "Conjugate_gradient_method",
             "row": 3,
             "Matrix": [[14,4,-16,-22],[4,29,-19,35],[-16,-19,27,5]],
             "error" : "0.000001"
