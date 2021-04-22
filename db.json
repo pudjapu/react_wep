@@ -9,7 +9,7 @@
         },
         {
             "name": "False position",
-            "eqtion": "x*13-1",
+            "eqtion": "x*43-1",
             "xl": "0.02",
             "xr": "0.03",
             "error": "0.000001"
