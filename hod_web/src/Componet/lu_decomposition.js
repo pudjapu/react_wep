@@ -4,6 +4,9 @@ import Lu_de from './Source/lu_decompo'
 
 import { Button } from 'antd'
 
+import axios from 'axios'
+let apiUrl = "http://localhost:4040/data/matrix/Lu_decomposition_method"
+
 class Lu_decomposition extends React.Component{
 
     state = {
@@ -11,6 +14,40 @@ class Lu_decomposition extends React.Component{
         columns: 2,
         Matrix: [[],[]],
         X: [],
+    }
+
+    async gatdata() { // ฟังชั้นเรียก api
+        try {
+
+            const data = await axios.get(apiUrl).then(e => (
+                e.data
+            ))
+            
+            let row = data["row"];
+
+            if(row > parseInt(this.state.rows)){
+                let r = parseInt(this.state.rows);
+                for(let i = r;i < row;i++){
+                    this.AddMatrix();
+                }
+            }
+            else{
+                let r = parseInt(this.state.rows);
+                for(let i = r;i > row;i--){
+                    this.DelMatrix();
+                }
+            }
+                
+            this.setState({Matrix: data["Matrix"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
     }
 
     Input = (e) =>{
@@ -22,10 +59,11 @@ class Lu_decomposition extends React.Component{
     }
     
     AddMatrix = (e) =>{
-        this.setState({rows: this.state.rows+1})
+        
         let Matrix = this.state.Matrix;
         Matrix.push([]);
         this.setState({Matrix: Matrix})
+        this.setState({rows: this.state.rows+1})
     }
 
     DelMatrix = (e) =>{
@@ -79,6 +117,7 @@ class Lu_decomposition extends React.Component{
                 <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add row/column</Button>
                 <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete row/column</Button>
                 <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
+                <Button type="primary" onClick={this.getdata_} >Get example</Button>
                 <Matrix row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
                 <div>{this.state.X}</div>
             </div>
