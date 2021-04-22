@@ -35,6 +35,16 @@ app.get('/data/matrix/:name', (req, res) => {
     res.json(data.matrix.find(data => data.name === req.params.name))
 })
 
+app.get('/data/interpolation', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.json(data.matrix)
+})
+
+app.get('/data/interpolation/:name', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.json(data.matrix.find(data => data.name === req.params.name))
+})
+
 app.listen(4040, () => {
     console.log("port 4040")
 })
