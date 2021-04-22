@@ -65,7 +65,6 @@ class Cubic_spline extends React.Component{
         let Matrix = this.state.Matrix
         let xs = []
         let ys = [];
-        let wow;
         for(let i = 0;i < Matrix.length;i++){
             xs.push(parseFloat(Matrix[i][0]));
             ys.push(parseFloat(Matrix[i][1]));

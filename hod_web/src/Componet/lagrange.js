@@ -64,12 +64,12 @@ class Lagrange extends React.Component{
     Calculate = (e) =>{
         let Matrix = this.state.Matrix
         let wow = new Lagranges(parseFloat(Matrix[0][0]), parseFloat(Matrix[0][1]), parseFloat(Matrix[1][0]), parseFloat(Matrix[1][1]));
-        let index;
+        let index
         for(let i = 2;i < Matrix.length;i++){
             index = wow.addPoint(parseFloat(Matrix[i][0]), parseFloat(Matrix[i][1]));
         }
 
-        this.setState({Answer : wow.valueOf(parseFloat(this.state.X))})
+        this.setState({Answer : index.valueOf(parseFloat(this.state.X))})
 
     }
 

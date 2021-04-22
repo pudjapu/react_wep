@@ -4,14 +4,51 @@ import {Matrix} from './Source/Matrix'
 import {Gauss_jodan} from './Source/Gauss_jodan'
 
 import { Button } from 'antd'
+import axios from 'axios'
+let apiUrl = "http://localhost:4040/data/matrix/Gauss_Jodan"
 
 class Gauss_Elimination extends React.Component{
 
     state = {
         rows: 2,
-        columns: 2,
         Matrix: [[],[]],
         X: [],
+    }
+
+    async gatdata() { // ฟังชั้นเรียก api
+        try {
+
+            const data = await axios.get(apiUrl).then(e => (
+                e.data
+            ))
+            
+            let row = data["row"];
+
+            if(row > parseInt(this.state.rows)){
+                let r = parseInt(this.state.rows);
+                for(let i = r;i < row;i++){
+                    // console.log(i)
+                    this.AddMatrix();
+                }
+            }
+            else{
+                let r = parseInt(this.state.rows);
+                for(let i = r;i > row;i--){
+                    // console.log(i)
+                    this.DelMatrix();
+                }
+            }
+
+            // this.setState({Equation: data["eqtion"],X: data["x"],ERROR: data["error"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
     }
 
     Input = (e) =>{
@@ -59,6 +96,7 @@ class Gauss_Elimination extends React.Component{
                 <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add row/column</Button>
                 <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete row/column</Button>
                 <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
+                <Button type="primary" onClick={this.getdata_} >Get example</Button>
                 <Matrix row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
                 <div>{this.state.X}</div>
 
