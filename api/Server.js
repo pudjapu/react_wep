@@ -11,10 +11,12 @@ app.get('/',(req, res) => {
 })
 
 app.get('/data', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data)
 })
 
 app.get('/data/root', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.root)
 })
 
@@ -24,6 +26,7 @@ app.get('/data/root/:name', (req, res) => {
 })
 
 app.get('/data/matrix', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.matrix)
 })
 
@@ -32,6 +35,6 @@ app.get('/data/matrix/:name', (req, res) => {
     res.json(data.matrix.find(data => data.name === req.params.name))
 })
 
-app.listen(4200, () => {
-    console.log("port 4200")
+app.listen(4040, () => {
+    console.log("port 4040")
 })
