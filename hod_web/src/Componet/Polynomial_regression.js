@@ -7,6 +7,8 @@ import { Input } from 'antd'
 import {Matrix2Input} from './Source/Matrix'
 import regression from 'regression';
 import { Button } from 'antd'
+
+
 var math = require('mathjs');
 
 class Polynomial extends React.Component{
@@ -21,10 +23,10 @@ class Polynomial extends React.Component{
     }
 
     AddMatrix = (e) =>{
-        this.setState({rows: this.state.rows+1})
         let Matrix = this.state.Matrix;
         Matrix.push([]);
         this.setState({Matrix: Matrix})
+        this.setState({rows: this.state.rows+1})
     }
 
     DelMatrix = (e) =>{
@@ -85,6 +87,7 @@ class Polynomial extends React.Component{
                 <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add Point</Button>
                 <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete Point</Button>
                 <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
+                
                 <div>
                     <span className="Text_Input_2"> X value : </span>
                     <span><Input placeholder="0.000001" onChange={this.GetX} className="Input_2"/></span>

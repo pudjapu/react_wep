@@ -3,6 +3,10 @@ import '../css/polynomial.css'
 import { Input } from 'antd'
 import { Button } from 'antd'
 
+
+import axios from 'axios'
+let apiUrl = "http://localhost:4040/data/interpolation/polynomial"
+
 class Polynomial extends React.Component{
 
     state = {
@@ -13,11 +17,45 @@ class Polynomial extends React.Component{
         
     }
 
+    async gatdata() { // ฟังชั้นเรียก api
+        try {
+
+            const data = await axios.get(apiUrl).then(e => (
+                e.data
+            ))
+            
+            let row = data["row"];
+
+            if(row > parseInt(this.state.rows)){
+                let r = parseInt(this.state.rows);
+                for(let i = r;i < row;i++){
+                    this.AddMatrix();
+                }
+            }
+            else{
+                let r = parseInt(this.state.rows);
+                for(let i = r;i > row;i--){
+                    this.DelMatrix();
+                }
+            }
+                
+            this.setState({Matrix: data["Matrix"],X: data["X"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
+    }
+
     AddMatrix = (e) =>{
-        this.setState({rows: this.state.rows+1})
         let Matrix = this.state.Matrix;
         Matrix.push([]);
         this.setState({Matrix: Matrix})
+        this.setState({rows: this.state.rows+1})
     }
 
     DelMatrix = (e) =>{
@@ -92,6 +130,7 @@ class Polynomial extends React.Component{
                     <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add Point</Button>
                     <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete Point</Button>
                     <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
+                    {/* <Button type="primary" onClick={this.getdata_} >Get example</Button> */}
                 </div>
                 <div>
                     X : <Input onChange={this.GetX} style={{margin: '5px' ,  width: 150}} width/>

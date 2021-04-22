@@ -6,6 +6,9 @@ import Lagranges from './Source/lagranges'
 
 import '../css/lagrange.css'
 
+import axios from 'axios'
+let apiUrl = "http://localhost:4040/data/interpolation/lagrange_interpolation"
+
 class Lagrange extends React.Component{
 
     state = {
@@ -16,11 +19,45 @@ class Lagrange extends React.Component{
         
     }
 
+    async gatdata() { // ฟังชั้นเรียก api
+        try {
+
+            const data = await axios.get(apiUrl).then(e => (
+                e.data
+            ))
+            
+            let row = data["row"];
+
+            if(row > parseInt(this.state.rows)){
+                let r = parseInt(this.state.rows);
+                for(let i = r;i < row;i++){
+                    this.AddMatrix();
+                }
+            }
+            else{
+                let r = parseInt(this.state.rows);
+                for(let i = r;i > row;i--){
+                    this.DelMatrix();
+                }
+            }
+                
+            this.setState({Matrix: data["Matrix"],X: data["X"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
+    }
+
     AddMatrix = (e) =>{
-        this.setState({rows: this.state.rows+1})
         let Matrix = this.state.Matrix;
         Matrix.push([]);
         this.setState({Matrix: Matrix})
+        this.setState({rows: this.state.rows+1})
     }
 
     DelMatrix = (e) =>{
@@ -30,21 +67,6 @@ class Lagrange extends React.Component{
             Matrix.pop();
             this.setState({Matrix: Matrix})
         }
-    }
-
-    MakeMatrix = (e) => {
-        let rows = this.state.rows;
-        rows = parseInt(rows);
-
-        let wow = [];
-        let i,j
-        for(i= 0;i < rows;i++){
-            for(j = 0; j < 2;j++){
-                wow.push(<span className="MyInput"><Input name={i.toString()+','+j.toString()} onChange={this.Getvalue} className="Input_2" style={{margin: '5px'}} value={this.state.Matrix[i][j]}/></span>)
-            }
-            wow.push(<div></div>)
-        }
-        return(wow);
     }
 
     Input = (e) =>{
@@ -81,6 +103,7 @@ class Lagrange extends React.Component{
                     <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add Point</Button>
                     <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete Point</Button>
                     <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
+                    {/* <Button type="primary" onClick={this.getdata_} >Get example</Button> */}
                 </div>
                 <span className="Text_Input_2"> X value : </span>
                 <span><Input placeholder="0.000001" onChange={this.GetX} className="Input_2"/></span>
