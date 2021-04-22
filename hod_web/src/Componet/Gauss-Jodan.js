@@ -27,19 +27,17 @@ class Gauss_Elimination extends React.Component{
             if(row > parseInt(this.state.rows)){
                 let r = parseInt(this.state.rows);
                 for(let i = r;i < row;i++){
-                    // console.log(i)
                     this.AddMatrix();
                 }
             }
             else{
                 let r = parseInt(this.state.rows);
                 for(let i = r;i > row;i--){
-                    // console.log(i)
                     this.DelMatrix();
                 }
             }
-
-            // this.setState({Equation: data["eqtion"],X: data["x"],ERROR: data["error"]})
+                
+            this.setState({Matrix: data["Matrix"]})
 
           } catch (error) {
             this.setState({result : "Not Sync"})
@@ -60,10 +58,11 @@ class Gauss_Elimination extends React.Component{
     }
     
     AddMatrix = (e) =>{
-        this.setState({rows: this.state.rows+1})
+        
         let Matrix = this.state.Matrix;
         Matrix.push([]);
         this.setState({Matrix: Matrix})
+        this.setState({rows: this.state.rows+1})
     }
 
     DelMatrix = (e) =>{
@@ -76,6 +75,7 @@ class Gauss_Elimination extends React.Component{
                 Matrix[i].pop();
             }
             this.setState({Matrix: Matrix})
+            
         }
         
     }
