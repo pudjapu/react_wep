@@ -5,8 +5,8 @@ import { Button } from 'antd';
 import axios from 'axios'
 import '../css/false_position.css';
 
-// let apiUrl = "http://localhost:4040/root"
-let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
+let apiUrl = "http://localhost:4040/data/root/False_position"
+// let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 
 class False_position extends React.Component{
 
@@ -25,7 +25,7 @@ class False_position extends React.Component{
                 e.data
             ))
             
-            this.setState({Equation: data[1]["eqtion"],XL: data[1]["xl"],XR: data[1]["xr"],ERROR: data[1]["error"]})
+            this.setState({Equation: data["eqtion"],XL: data["xl"],XR: data["xr"],ERROR: data["error"]})
 
           } catch (error) {
             this.setState({result : "Not Sync"})

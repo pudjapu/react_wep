@@ -5,8 +5,8 @@ import { Button } from 'antd';
 
 import '../css/one_point.css'
 import axios from 'axios'
-// let apiUrl = "http://localhost:4040/root"
-let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
+let apiUrl = "http://localhost:4040/data/root/One-point_iteration"
+// let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 class One_point extends React.Component{
 
     state = {
@@ -23,7 +23,7 @@ class One_point extends React.Component{
                 e.data
             ))
             
-            this.setState({Equation: data[2]["eqtion"],X: data[2]["x"],ERROR: data[2]["error"]})
+            this.setState({Equation: data["eqtion"],X: data["x"],ERROR: data["error"]})
 
           } catch (error) {
             this.setState({result : "Not Sync"})

@@ -6,8 +6,8 @@ import { Button } from 'antd';
 
 import axios from 'axios'
 
-// let apiUrl = "http://localhost:4040/root"
-let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
+let apiUrl = "http://localhost:4040/data/root/Secant"
+// let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 
 class Secant extends React.Component{
 
@@ -26,7 +26,7 @@ class Secant extends React.Component{
                 e.data
             ))
             
-            this.setState({Equation: data[4]["eqtion"],X_1: data[4]["x1"],X_2: data[4]["x2"],ERROR: data[4]["error"]})
+            this.setState({Equation: data["eqtion"],X_1: data["x1"],X_2: data["x2"],ERROR: data["error"]})
 
           } catch (error) {
             this.setState({result : "Not Sync"})

@@ -7,8 +7,8 @@ import { Input } from 'antd';
 import { Button } from 'antd';
 
 import axios from 'axios'
-// let apiUrl = "http://localhost:4040/root"
-let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
+let apiUrl = "http://localhost:4040/data/root/Newton_Raphson"
+// let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 
 
 class Newton_Raphson extends React.Component{
@@ -27,7 +27,7 @@ class Newton_Raphson extends React.Component{
                 e.data
             ))
             
-            this.setState({Equation: data[3]["eqtion"],X: data[3]["x"],ERROR: data[3]["error"]})
+            this.setState({Equation: data["eqtion"],X: data["x"],ERROR: data["error"]})
 
           } catch (error) {
             this.setState({result : "Not Sync"})
