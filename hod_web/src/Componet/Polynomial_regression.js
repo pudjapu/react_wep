@@ -6,6 +6,7 @@ import { Input } from 'antd'
 
 import {Matrix2Input} from './Source/Matrix'
 import regression from 'regression';
+import { Button } from 'antd'
 var math = require('mathjs');
 
 class Polynomial extends React.Component{
@@ -81,11 +82,13 @@ class Polynomial extends React.Component{
         return(
             <div className='allincompro'>
                 <h2>Polynomial regression</h2>
-                <button onClick={this.AddMatrix}>+</button>
-                <button onClick={this.DelMatrix}>-</button>
-                <button onClick={this.Calculate}>cal</button>
-                <span className="Text_Input_2"> X value : </span>
-                <span><Input placeholder="0.000001" onChange={this.GetX} className="Input_2"/></span>
+                <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add Point</Button>
+                <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete Point</Button>
+                <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
+                <div>
+                    <span className="Text_Input_2"> X value : </span>
+                    <span><Input placeholder="0.000001" onChange={this.GetX} className="Input_2"/></span>
+                </div>
                 <Matrix2Input row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
                 <div>{this.state.Answer}</div>
             </div>
