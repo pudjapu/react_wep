@@ -14,6 +14,11 @@ const data = {
             "name": "Matrix",
             "description": "โจทย์ Matrix",
         }
+        ,
+        {
+            "name": "interpolation",
+            "description": "โจทย์ interpolation",
+        }
     ],
     "schemes": [
         "http"
@@ -97,7 +102,47 @@ const data = {
                     }
                 }
             }
+        },
+        "/interpolation": {
+            "get": {
+                "tags": [
+                    "interpolation"
+                ],
+                "summary": "แสดงข้อมูลทั้งหมด",
+                "responses": {
+                    "200": {
+                        "description": "ทำงานสำเร็จ"
+                    },
+                    "404": {
+                        "description": "ทำงานไม่สำเร็จ"
+                    }
+                }
+            }
+        },
+        "/interpolation/{name}": {
+            "get": {
+                "tags": [
+                    "interpolation"
+                ],
+                "summary": "ค้นหาโจทย์ทั้งหมดในเรื่อง interpolation",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "ชื่อของ method",
+                        "required": false,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ทำงานสำเร็จ"
+                    }
+                }
+            }
         }
+        
         
     }
 }
