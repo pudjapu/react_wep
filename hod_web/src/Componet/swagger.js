@@ -1,10 +1,10 @@
 import React from 'react';
 
-class swagger extends React.Component{
+class home extends React.Component{
     render(){
         return(
             <div>home</div>
         );
     }
 }
-export default swagger
+export default home
