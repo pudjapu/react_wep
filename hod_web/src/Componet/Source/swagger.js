@@ -26,7 +26,7 @@ const data = {
     
     "paths": {
         "/root": {
-            "get": {
+            "post": {
                 "tags": [
                     "Root of Equation"
                 ],
@@ -42,7 +42,7 @@ const data = {
             }
         },
         "/root/{name}": {
-            "get": {
+            "post": {
                 "tags": [
                     "Root of Equation"
                 ],
@@ -65,7 +65,7 @@ const data = {
             }
         },
         "/matrix": {
-            "get": {
+            "post": {
                 "tags": [
                     "Matrix"
                 ],
@@ -81,7 +81,7 @@ const data = {
             }
         },
         "/matrix/{name}": {
-            "get": {
+            "post": {
                 "tags": [
                     "Matrix"
                 ],
@@ -104,7 +104,7 @@ const data = {
             }
         },
         "/interpolation": {
-            "get": {
+            "post": {
                 "tags": [
                     "interpolation"
                 ],
@@ -120,7 +120,7 @@ const data = {
             }
         },
         "/interpolation/{name}": {
-            "get": {
+            "post": {
                 "tags": [
                     "interpolation"
                 ],

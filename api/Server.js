@@ -10,37 +10,37 @@ app.get('/',(req, res) => {
     res.send("wow")
 })
 
-app.get('/data', (req, res) => {
+app.post('/data', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data)
 })
 
-app.get('/data/root', (req, res) => {
+app.post('/data/root', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.root)
 })
 
-app.get('/data/root/:name', (req, res) => {
+app.post('/data/root/:name', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.root.find(data => data.name === req.params.name))
 })
 
-app.get('/data/matrix', (req, res) => {
+app.post('/data/matrix', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.matrix)
 })
 
-app.get('/data/matrix/:name', (req, res) => {
+app.post('/data/matrix/:name', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.matrix.find(data => data.name === req.params.name))
 })
 
-app.get('/data/interpolation', (req, res) => {
+app.post('/data/interpolation', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.matrix)
 })
 
-app.get('/data/interpolation/:name', (req, res) => {
+app.post('/data/interpolation/:name', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(data.matrix.find(data => data.name === req.params.name))
 })

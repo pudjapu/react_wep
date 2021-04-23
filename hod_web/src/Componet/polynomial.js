@@ -20,7 +20,7 @@ class Polynomial extends React.Component{
     async gatdata() { // ฟังชั้นเรียก api
         try {
 
-            const data = await axios.get(apiUrl).then(e => (
+            const data = await axios.post(apiUrl).then(e => (
                 e.data
             ))
             
