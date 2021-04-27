@@ -7,7 +7,7 @@ import { Input } from 'antd';
 import { Button } from 'antd';
 
 import axios from 'axios'
-let apiUrl = "http://localhost:4040/data/root/Newton_Raphson"
+let apiUrl = "http://localhost:4040/data/root/Newton_Raphson?key=45134Asd4864wadfad"
 // let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 
 

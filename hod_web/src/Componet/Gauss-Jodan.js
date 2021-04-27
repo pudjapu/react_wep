@@ -5,7 +5,7 @@ import {Gauss_jodan} from './Source/Gauss_jodan'
 
 import { Button } from 'antd'
 import axios from 'axios'
-let apiUrl = "http://localhost:4040/data/matrix/Gauss_Jodan"
+let apiUrl = "http://localhost:4040/data/matrix/Gauss_Jodan?key=45134Asd4864wadfad"
 
 class Gauss_Elimination extends React.Component{
 

@@ -7,7 +7,7 @@ import '../css/Gauss_seidel.css'
 
 
 import axios from 'axios'
-let apiUrl = "http://localhost:4040/data/matrix/Gauss_seidel_interation"
+let apiUrl = "http://localhost:4040/data/matrix/Gauss_seidel_interation?key=45134Asd4864wadfad"
 
 class Gauss_seidel extends React.Component{
 

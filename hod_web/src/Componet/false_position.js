@@ -5,7 +5,7 @@ import { Button } from 'antd';
 import axios from 'axios'
 import '../css/false_position.css';
 
-let apiUrl = "http://localhost:4040/data/root/False_position"
+let apiUrl = "http://localhost:4040/data/root/False_position?key=45134Asd4864wadfad"
 // let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 
 class False_position extends React.Component{

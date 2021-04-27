@@ -6,7 +6,7 @@ import { bisection } from './Source/bisection'
 import axios from 'axios'
 import '../css/bisecton.css';
 
-let apiUrl = "http://localhost:4040/data/root/Bisection"
+let apiUrl = "http://localhost:4040/data/root/Bisection?key=45134Asd4864wadfad"
 // let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 
 

@@ -6,7 +6,7 @@ import { Button } from 'antd';
 
 import axios from 'axios'
 
-let apiUrl = "http://localhost:4040/data/root/Secant"
+let apiUrl = "http://localhost:4040/data/root/Secant?key=45134Asd4864wadfad"
 // let apiUrl = "https://my-json-server.typicode.com/pudjapu/react_wep/root"
 
 class Secant extends React.Component{

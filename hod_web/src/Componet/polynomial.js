@@ -5,7 +5,7 @@ import { Button } from 'antd'
 
 
 import axios from 'axios'
-let apiUrl = "http://localhost:4040/data/interpolation/polynomial"
+let apiUrl = "http://localhost:4040/data/interpolation/polynomial?key=45134Asd4864wadfad"
 
 class Polynomial extends React.Component{
 

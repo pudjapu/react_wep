@@ -7,7 +7,7 @@ import Lagranges from './Source/lagranges'
 import '../css/lagrange.css'
 
 import axios from 'axios'
-let apiUrl = "http://localhost:4040/data/interpolation/lagrange_interpolation"
+let apiUrl = "http://localhost:4040/data/interpolation/lagrange_interpolation?key=45134Asd4864wadfad"
 
 class Lagrange extends React.Component{
 

@@ -7,7 +7,7 @@ import { Input } from 'antd';
 import { Button } from 'antd'
 
 import axios from 'axios'
-let apiUrl = "http://localhost:4040/data/matrix/Jacobi_iteration"
+let apiUrl = "http://localhost:4040/data/matrix/Jacobi_iteration?key=45134Asd4864wadfad"
 
 class Jacobi_iteration extends React.Component{
 
