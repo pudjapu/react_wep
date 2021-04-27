@@ -2,8 +2,11 @@ import React from 'react'
 import '../css/Cramer.css'
 // import {AddMatrix,DelMatrix,MakeMatrix,Getvalue} from './Source/Matrix'
 
-import { Input } from 'antd'
 import { Button } from 'antd'
+import {Matrix} from './Source/Matrix'
+
+import axios from 'axios'
+let apiUrl = "http://localhost:4040/data/matrix/cramer_rule?key=45134Asd4864wadfad"
 
 class Cramer extends React.Component{
 
@@ -11,61 +14,44 @@ class Cramer extends React.Component{
         rows: 2,
         columns: 2,
         Matrix: [[],[]],
-        Answer: [],
         X: [],
     }
 
-    AddMatrix = (e) =>{
-        this.setState({rows: this.state.rows+1,columns: this.state.columns+1})
-        let Matrix = this.state.Matrix;
-        Matrix.push([]);
-        this.setState({Matrix: Matrix})
-    }
+    async gatdata() { // ฟังชั้นเรียก api
+        try {
 
-    DelMatrix = (e) =>{
-        if(this.state.rows > 2){
-            this.setState({rows: this.state.rows-1,columns: this.state.columns-1})
-            let Matrix = this.state.Matrix;
-            Matrix.pop();
-            for(let i = 0;i < this.state.rows-1;i++){
-                Matrix[i].pop()
+            const data = await axios.post(apiUrl).then(e => (
+                e.data
+            ))
+            
+            let row = data["row"];
+
+            if(row > parseInt(this.state.rows)){
+                let r = parseInt(this.state.rows);
+                for(let i = r;i < row;i++){
+                    this.AddMatrix();
+                }
             }
-            this.setState({Matrix: Matrix})
-        }
-    }
-
-    MakeMatrix = (e) => {
-        let rows = this.state.rows;
-        rows = parseInt(rows);
-        let columns = this.state.columns;
-        columns = parseInt(columns);
-
-        let wow = [];
-        let i,j
-        for(i= 0;i < rows;i++){
-            for(j = 0; j < columns;j++){
-                wow.push(<span className="MyInput"><Input name={i.toString()+','+j.toString()} onChange={this.Getvalue} className="Input_2" style={{margin: '5px'}} value={this.state.Matrix[i][j]}/></span>)
+            else{
+                let r = parseInt(this.state.rows);
+                for(let i = r;i > row;i--){
+                    this.DelMatrix();
+                }
             }
-            wow.push(<div></div>)
-        }
-        // console.log(wow)
-        return(wow);
+                
+            this.setState({Matrix: data["Matrix"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
     }
 
-    MakeAnswer = (e) =>{
-        let rows = this.state.rows;
-        rows = parseInt(rows);
-
-        let wow = [];
-        let i;
-        for(i = 0; i < rows;i++){
-            wow.push(<Input name={i.toString()} onChange={this.GetAnswer} className="Input_2" style={{margin: '5px'}} value={this.state.Answer[i]}/>)
-            wow.push(<div></div>)
-        }
-        return(wow);
+    getdata_ = (e) => {
+        this.gatdata();
     }
 
-    Getvalue = (e) => {
+    Input = (e) =>{
         let arr = [];
         let Matrix = this.state.Matrix;
         arr = e.target.name.split(',');
@@ -73,29 +59,48 @@ class Cramer extends React.Component{
         this.setState({Matrix: Matrix})
     }
 
-    GetAnswer = (e) => {
-        let Answer = this.state.Answer;
-        Answer[parseInt(e.target.name)]= e.target.value;
-        this.setState({Answer: Answer})
-        this.setState({Answer: Answer})
+    AddMatrix = (e) =>{
+        
+        let Matrix = this.state.Matrix;
+        Matrix.push([]);
+        this.setState({Matrix: Matrix})
+        this.setState({rows: this.state.rows+1})
+    }
+
+    DelMatrix = (e) =>{
+        if(this.state.rows > 2){
+            let i;
+            this.setState({rows: this.state.rows-1})
+            let Matrix = this.state.Matrix;
+            Matrix.pop();
+            for(i = 0;i < Matrix.length;i++){
+                Matrix[i].pop();
+            }
+            this.setState({Matrix: Matrix})
+            
+        }
+        
     }
 
     Calculate = (e) =>{
 
         var math = require('mathjs');
 
-        let Matrix = this.state.Matrix;
-        let Answer = this.state.Answer;
+        let Matrix_ = this.state.Matrix;
+        let Matrix = [];
+        let Answer = [];
         let rows = this.state.rows;
         rows = parseInt(rows);
 
         let i,j
 
         for(i = 0;i < rows;i++){
+            let tem = [];
             for(j = 0;j < rows;j++){
-                Matrix[i][j] = parseInt(Matrix[i][j]);
+                tem.push(parseInt(Matrix_[i][j]));
             }
-            Answer[i] = parseInt(Answer[i]);
+            Matrix.push(tem);
+            Answer.push(parseInt(Matrix_[i][rows]));
         }
 
         let temp = [];
@@ -137,10 +142,10 @@ class Cramer extends React.Component{
                     <Button className='button_laout' type="primary" onClick={this.AddMatrix}>Add row/column</Button>
                     <Button className='button_laout' type="primary" onClick={this.DelMatrix}>Delete row/column</Button>
                     <Button className='button_laout' type="primary" onClick={this.Calculate}>Calculate</Button>
+                    <Button type="primary" onClick={this.getdata_} >Get example</Button>
                 </div>
                 <div className='MakeMatrix'>
-                <div>{this.MakeMatrix()}</div>
-                <div>{this.MakeAnswer()}</div>
+                <Matrix row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
                 </div>
                 <div className='Matrix'>{this.state.X}</div>
             </div>
