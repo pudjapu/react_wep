@@ -130,10 +130,10 @@ class Polynomial extends React.Component{
                     <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add Point</Button>
                     <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete Point</Button>
                     <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
-                    {/* <Button type="primary" onClick={this.getdata_} >Get example</Button> */}
+                    <Button type="primary" onClick={this.getdata_} >Get example</Button>
                 </div>
                 <div>
-                    X : <Input onChange={this.GetX} style={{margin: '5px' ,  width: 150}} width/>
+                    X : <Input onChange={this.GetX}  value={this.state.X} style={{margin: '5px' ,  width: 150}} width/>
                 </div>
                 <div>{this.MakeMatrix()}</div>
                 {this.state.Answer}

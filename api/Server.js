@@ -50,12 +50,12 @@ app.post('/data/matrix/:name', intercep , (req, res) => {
 
 app.post('/data/interpolation', intercep , (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.json(data.matrix)
+    res.json(data.interpolation)
 })
 
 app.post('/data/interpolation/:name', intercep , (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.json(data.matrix.find(data => data.name === req.params.name))
+    res.json(data.interpolation.find(data => data.name === req.params.name))
 })
 
 app.listen(4040, () => {

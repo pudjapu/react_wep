@@ -6,6 +6,11 @@ import '../css/Gauss_Elimina.css'
 import { Input } from 'antd'
 import { Button } from 'antd'
 
+import {Matrix} from './Source/Matrix'
+
+import axios from 'axios'
+let apiUrl = "http://localhost:4040/data/matrix/Gauss_Elimination_Method?key=45134Asd4864wadfad"
+
 class Gauss_Elimination extends React.Component{
 
     state = {
@@ -15,23 +20,69 @@ class Gauss_Elimination extends React.Component{
         X: [],
     }
 
+    async gatdata() { // ฟังชั้นเรียก api
+        try {
+
+            const data = await axios.post(apiUrl).then(e => (
+                e.data
+            ))
+            
+            let row = data["row"];
+
+            if(row > parseInt(this.state.rows)){
+                let r = parseInt(this.state.rows);
+                for(let i = r;i < row;i++){
+                    this.AddMatrix();
+                }
+            }
+            else{
+                let r = parseInt(this.state.rows);
+                for(let i = r;i > row;i--){
+                    this.DelMatrix();
+                }
+            }
+                
+            this.setState({Matrix: data["Matrix"]})
+
+          } catch (error) {
+            this.setState({result : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
+    }
+
+    Input = (e) =>{
+        let arr = [];
+        let Matrix = this.state.Matrix;
+        arr = e.target.name.split(',');
+        Matrix[parseInt(arr[0])][parseInt(arr[1])] = e.target.value;
+        this.setState({Matrix: Matrix})
+    }
+
     AddMatrix = (e) =>{
-        this.setState({rows: this.state.rows+1,columns: this.state.columns+1})
+        
         let Matrix = this.state.Matrix;
         Matrix.push([]);
         this.setState({Matrix: Matrix})
+        this.setState({rows: this.state.rows+1})
     }
 
     DelMatrix = (e) =>{
         if(this.state.rows > 2){
-            this.setState({rows: this.state.rows-1,columns: this.state.columns-1})
+            let i;
+            this.setState({rows: this.state.rows-1})
             let Matrix = this.state.Matrix;
             Matrix.pop();
-            for(let i = 0;i < this.state.rows-1;i++){
-                Matrix[i].pop()
+            for(i = 0;i < Matrix.length;i++){
+                Matrix[i].pop();
             }
             this.setState({Matrix: Matrix})
+            
         }
+        
     }
 
     MakeMatrix = (e) => {
@@ -50,15 +101,6 @@ class Gauss_Elimination extends React.Component{
         }
         // console.log(wow)
         return(wow);
-    }
-
-
-    Getvalue = (e) => {
-        let arr = [];
-        let Matrix = this.state.Matrix;
-        arr = e.target.name.split(',');
-        Matrix[parseInt(arr[0])][parseInt(arr[1])] = e.target.value;
-        this.setState({Matrix: Matrix})
     }
 
     Calculate = (e) =>{
@@ -129,9 +171,10 @@ class Gauss_Elimination extends React.Component{
                     <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add row/column</Button>
                     <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete row/column</Button>
                     <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
+                    <Button type="primary" onClick={this.getdata_} >Get example</Button>
                 </div>
                 <div className='MakeMatrix'>
-                <div>{this.MakeMatrix()}</div>
+                <Matrix row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
                 </div>
                 {this.state.X}
             </div>
