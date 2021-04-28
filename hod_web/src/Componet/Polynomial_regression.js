@@ -8,6 +8,8 @@ import {Matrix2Input} from './Source/Matrix'
 import regression from 'regression';
 import { Button } from 'antd'
 
+import axios from 'axios'
+let apiUrl = "http://localhost:4040/data/interpolation/polynomial_regression?key=45134Asd4864wadfad"
 
 var math = require('mathjs');
 
@@ -20,6 +22,40 @@ class Polynomial extends React.Component{
         X: 0,
         Answer: '',
         
+    }
+
+    async gatdata() { // ฟังชั้นเรียก api
+        try {
+
+            const data = await axios.post(apiUrl).then(e => (
+                e.data
+            ))
+            
+            let row = data["row"];
+
+            if(row > parseInt(this.state.rows)){
+                let r = parseInt(this.state.rows);
+                for(let i = r;i < row;i++){
+                    this.AddMatrix();
+                }
+            }
+            else{
+                let r = parseInt(this.state.rows);
+                for(let i = r;i > row;i--){
+                    this.DelMatrix();
+                }
+            }
+                
+            this.setState({Matrix: data["Matrix"],X: data["X"]})
+
+          } catch (error) {
+            this.setState({Answer : "Not Sync"})
+          }
+
+    }
+
+    getdata_ = (e) => {
+        this.gatdata();
     }
 
     AddMatrix = (e) =>{
@@ -36,21 +72,6 @@ class Polynomial extends React.Component{
             Matrix.pop();
             this.setState({Matrix: Matrix})
         }
-    }
-
-    MakeMatrix = (e) => {
-        let rows = this.state.rows;
-        rows = parseInt(rows);
-
-        let wow = [];
-        let i,j
-        for(i= 0;i < rows;i++){
-            for(j = 0; j < 2;j++){
-                wow.push(<span className="MyInput"><Input name={i.toString()+','+j.toString()} onChange={this.Getvalue} className="Input_2" style={{margin: '5px'}} value={this.state.Matrix[i][j]}/></span>)
-            }
-            wow.push(<div></div>)
-        }
-        return(wow);
     }
 
     Input = (e) =>{
@@ -70,14 +91,15 @@ class Polynomial extends React.Component{
     Calculate = (e) =>{
         let Matrix = this.state.Matrix;
         let data = [];
+        const x = parseFloat(this.state.X);
         for(let i =0;i < Matrix.length;i++){
             data.push([parseFloat(Matrix[i][0]),parseFloat(Matrix[i][1])])
         }
-        let result = regression.linear(data);
-        let a2 = result.equation[0];
-        let a1 = result.equation[1];
-        let a0 = result.equation[2];
-        this.setState({Answer: a0+(a1*parseFloat(this.state.X))+(math.pow(a2,2)*parseFloat(this.state.X))})
+        let result = regression.polynomial(data);
+        let a0 = parseFloat(result.equation[0]);
+        let a1 = parseFloat(result.equation[1]);
+        let a2 = parseFloat(result.equation[2]);
+        this.setState({Answer: a2+(a1*x)+(a0*math.pow(x,2))})
     }
 
     render(){
@@ -87,10 +109,10 @@ class Polynomial extends React.Component{
                 <Button className='Button_' type="primary" onClick={this.AddMatrix}>Add Point</Button>
                 <Button className='Button_' type="primary" onClick={this.DelMatrix}>Delete Point</Button>
                 <Button className='Button_' type="primary" onClick={this.Calculate}>Calculate</Button>
-                
+                <Button type="primary" onClick={this.getdata_} >Get example</Button>
                 <div>
                     <span className="Text_Input_2"> X value : </span>
-                    <span><Input placeholder="0.000001" onChange={this.GetX} className="Input_2"/></span>
+                    <span><Input value={this.state.X} onChange={this.GetX} className="Input_2"/></span>
                 </div>
                 <Matrix2Input row={this.state.rows} onChange={this.Input} value={this.state.Matrix}/>
                 <div>{this.state.Answer}</div>
